@@ -12,14 +12,10 @@ export default class Nav extends React.Component{
     return (
       <nav className="main-nav">
         <ul className="nav-list">
-          <li className="nav-list-item"><Link to="/dashboard">Home</Link></li>
-          { !localStorage.token ?
-            <li className="nav-list-item"><Link to="/landing/signin">Sign in</Link></li>
-            : undefined}
-          { !localStorage.token ? <li className="nav-list-item"><Link to="/landing/signup">Sign up</Link></li>
-            : undefined}
-          { localStorage.token ? <li onClick={this.logout}><Link to="/">Sign Out</Link></li>
-            : undefined}
+          <li className="nav-list-item"><Link to="/landing">Home</Link></li>
+          <li className="nav-list-item"><Link to="/landing/signin">Sign in</Link></li>
+          <li onClick={this.logout}><Link to="/">Sign Out</Link></li>
+          <li className="nav-list-item"><Link to="/tournament">Create Tournament</Link></li>
         </ul>
       </nav>
     );

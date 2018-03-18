@@ -5,7 +5,7 @@ export default class Header extends React.Component{
   render(){
     return (
       <header>
-        <h1></h1>
+        <h1>Tournament</h1>
         <Nav/>
       </header>
     );
