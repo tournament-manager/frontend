@@ -1,8 +1,6 @@
 language: node_js
 node_js:
-  - '8.4.0'
-services:
-  - mongodb
+  - 'stable'
 addons:
   apt:
     sources:
@@ -13,16 +11,13 @@ addons:
 env:
   - CXX=g++-5
 sudo: required
-# safelist
 branches:
   only:
-  - master
-  - staging
-  - development
-
-  # except:
-  #   -
+    - master
+    - development
+    - production
+    - staging
 before_script: npm i
 script:
-  # - npm run lint
   - npm test
+  # - npm run watch
