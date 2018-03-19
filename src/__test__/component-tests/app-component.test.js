@@ -3,7 +3,7 @@ const React = require('react');
 const shallow = require('enzyme');
 const configure = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
-const {App} = require('../../components/app');
+const App = require('../../components/app');
 
 
 configure({adapter: new Adapter()});
@@ -12,7 +12,7 @@ describe('App tests', function (){
 
   describe('App shallow mount', () => {
 
-    beforeAll(() => this.component = shallow(<App />));
+    beforeAll(() => this.component = shallow(App));
     afterAll(() => this.component.unmount());
 
     it('should render an App component', () => {
