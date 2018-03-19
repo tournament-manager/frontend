@@ -1,8 +1,9 @@
 'use strict';
-import React from 'react';
-import {configure, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import {App} from '../../components/app';
+const React = require('react');
+const shallow = require('enzyme');
+const configure = require('enzyme');
+const Adapter = require('enzyme-adapter-react-16');
+const App = require('../../components/app');
 
 
 configure({adapter: new Adapter()});
