@@ -38,9 +38,9 @@ module.exports = {
   plugins,
   module: {
     rules: [
-      { 
+      {
         test: /\.js$/,
-        exclude: /node-modules/,
+        exclude: /node_modules/,
         loaders: 'babel-loader',
       },
       {
