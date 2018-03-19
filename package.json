@@ -58,6 +58,7 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "jest-cli": "^23.0.0-alpha.0"
   }
 }
