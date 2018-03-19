@@ -69,5 +69,8 @@
   },
   "dependencies": {
     "jest-cli": "^23.0.0-alpha.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
   }
 }
