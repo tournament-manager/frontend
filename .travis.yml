@@ -19,7 +19,7 @@ branches:
     - development
     - production
     - staging
-before_script: npm i
+before_script: npm i --no-optional
 script:
   - npm test
   # - npm run watch
