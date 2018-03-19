@@ -1,4 +1,6 @@
 import React from 'react';
+import {Route} from 'react-router-dom';
+import {AdminView} from '../admin';
 
 export default class App extends React.Component{
  
@@ -6,6 +8,7 @@ export default class App extends React.Component{
     return (
       <main>
         <h1>Tournament!</h1>
+        <Route exact path="/admin" component={AdminView}/>
       </main>
     );
   }
