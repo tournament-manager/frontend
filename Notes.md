@@ -30,3 +30,24 @@ Tournament View Page: View/Fetch All Tournaments
 On click of a Tournament, View Age/Boys/Girls/Team Rendered from Schema
 https://stackoverflow.com/questions/46586656/reactjs-display-fetch-response-onclick
 
+https://stackoverflow.com/questions/46586656/reactjs-display-fetch-response-onclick
+
+
+
+#OverView For tournament view
+1. Need to group division, classification, date and field data onto one {this.state.post} or something similar
+2. Need to render in a unique ID for each tournament
+3. Need to create onClick function that generates the tournament ID clicked, to its following options: division, classification, date and field (no unique ID)
+4. Click classification to show divisions data and field
+5. click division to show date and field!
+
+Possibilities
+make each <li>data</li> a link (style with on hover or something) that displays that data
+Re-route onClick to show only that tournament and its children data options
+onClick hide/show tournaments components
+
+Create Component for each view
+
+
+
+
