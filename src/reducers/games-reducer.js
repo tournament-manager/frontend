@@ -5,6 +5,8 @@ export default (state={}, action) => {
 
   takeAction['SET_STATE'] = storage => storage.games;
 
+  takeAction['RESET_STATE'] = () => null;
+
   return takeAction[type] ? takeAction[type](payload) : state;
 
 };
