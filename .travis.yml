@@ -1,0 +1,25 @@
+language: node_js
+os:
+  - osx
+node_js:
+  - 'stable'
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-5
+      - g++-5
+env:
+  - CXX=g++-5
+sudo: required
+branches:
+  only:
+    - master
+    - development
+    - production
+    - staging
+before_script: npm i --no-optional
+script:
+  - npm test
+  # - npm run watch
