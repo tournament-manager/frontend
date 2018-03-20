@@ -1,20 +1,30 @@
 import React from 'react';
-import store from '../../lib/store';
 import {Provider} from 'react-redux';
-import {Route} from 'react-router-dom';
-import {AdminView} from '../admin';
+import createStore from '../../lib/store';
+import Dashboard from '../dashboard/dashboard';
+import {BrowserRouter, Route} from 'react-router-dom';
 
-export default class App extends React.Component{
+const store = createStore();
 
-  
-  render(){
+class App extends React.Component {
+  componentDidMount() {
+    store.subscribe(() => console.log('__STATE__:', store.getState()));
+  }
+
+  render() {
     return (
-      <Provider store={store}>
-        <main>
-          <h1>Tournament!</h1>
-          <Route exact path="/admin" component={AdminView}/>
-        </main>
-      </Provider>
+      <main className="main-content">
+        <Provider store={store}>
+          <BrowserRouter>
+            <div>
+              <Route exact path="/" component={Dashboard}/>
+            </div>
+          </BrowserRouter>
+        </Provider>
+      </main>
+
     );
   }
 }
+
+export default App;
