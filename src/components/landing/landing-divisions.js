@@ -24,8 +24,8 @@ class Landing extends React.Component {
     return (
       <div className="landing-container">
         <h1>Welcome to Tournament Manager</h1>
-        <h4>Login to view your tournaments<h4>
-          <h4>sign up to customize your tournament views</h4>
+        <h4>Login to view your tournaments</h4>
+        <h4>sign up to customize your tournament views</h4>
         <AuthForm
           auth={params.auth}
           redirect={this.redirect}
