@@ -5,9 +5,9 @@ export default class DivisionForm extends  React.Component{
   constructor(props){
     super(props);
     this.state = {
-      ageGroup: '',
-      classification: '',
-      name: '',
+      ageGroup: this.props.division.agegroup || '',
+      classification: this.props.division.classification || '',
+      name: this.props.division.name || '',
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -29,6 +29,10 @@ export default class DivisionForm extends  React.Component{
 
         <AgeGroupList onSelect={this.handleChange} 
           textValue={this.state.ageGroup} />
+        <div className="division-form-btn-wrap">
+          <button type="button" name="remove" >Remove</button>
+          <button type='submit' name='save'>Save</button>
+        </div>
       </form>
     );
   }

@@ -1,0 +1,21 @@
+
+.tournament-value {
+  cursor: pointer;
+}
+
+.tournament-list{
+  cursor: pointer;
+  max-height: 0;
+  overflow: hidden;
+  transition: 350ms;
+}
+
+.tournament-list.visible{
+  max-height: 3em;
+  overflow: auto;
+  transition: 350ms;
+}
+
+.tournament-item {
+  cursor: pointer;
+}
