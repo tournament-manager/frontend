@@ -32,6 +32,9 @@ https://stackoverflow.com/questions/46586656/reactjs-display-fetch-response-oncl
 
 https://stackoverflow.com/questions/46586656/reactjs-display-fetch-response-onclick
 
+Create drop down from schema, select category, render to DOM, keep filtering till user gets to designated tournament data
+http://www.mattmorgante.com/technology/dropdown-with-react
+
 
 
 #OverView For tournament view
@@ -47,6 +50,18 @@ Re-route onClick to show only that tournament and its children data options
 onClick hide/show tournaments components
 
 Create Component for each view
+
+#DropDown
+either create each drop down for tournament, classification, and division. and submit button
+this will render all the tournaments based on user selections
+OR
+Create drop down button for ONE selection and show tournaments based off that which can be done easily
+
+#FOUND SOURCE
+to map through user selcetions and display an other drop down based on selection and keep filtering down
+http://www.mattmorgante.com/technology/dropdown-with-react
+
+
 
 
 

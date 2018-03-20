@@ -12,9 +12,9 @@ export default class Tournament extends React.Component {
       dropdownOpen: false,
       tournament: [],
       division: [], //age group
-      classification: [], //boys or girls
-      date: [],
-      field: [],
+      // classification: [], //boys or girls
+      // date: [],
+      // field: [],
       post: '',
     };
   };
@@ -22,12 +22,27 @@ export default class Tournament extends React.Component {
 
 toggle() {
   this.setState({
-    dropdownOpen: !this.state.dropdownOpen
+    dropdownOpen: !this.state.dropdownOpen,
+    tournament: this.state.tournament.concat([child.key]),
+    division: this.state.date.concat([child.val().date]),
   })
 }
 
 componentDidMount(){
-  const rootRef = mongoose.database().ref(); //enables mongoose references I think
+  const initialTournaments = [];
+  fetch(mongoose.database().ref())
+  .then(response => {
+    return response.json();
+  }).then(data => {
+    initialTournaments = data.results.map((tourney) => {
+      return tourney
+    })
+    console.log('LIST OF TOURNAMENTS', initialTournaments);
+    this.setState({
+      tournament: initialTournaments,
+    })
+  })
+}
   const post = mongoose.child('post').orderByKey(); //post by mongoose key
 
   post.once('value', snap => {
@@ -35,7 +50,7 @@ componentDidMount(){
       this.setState({
         tournament: this.state.tournament.concat([child.key]),
         division: this.state.date.concat([child.val().date]),
-       // classification: this.state.field.concat([child.val().field])
+        classification: this.state.field.concat([child.val().field])
       });
 
       const postList = this.state.date.map((dataList, index) =>
@@ -43,14 +58,6 @@ componentDidMount(){
           {dataList}
           <br/>
           {this.state.tournament[index]}
-          <br/>
-          {this.state.division[index]}
-          <br/>
-          {this.state.classification[index]}
-          <br/>
-          {this.state.date[index]}
-          <br/>
-          {this.state.field[index]}
           <hr/>
         </p>
       );
@@ -69,13 +76,25 @@ componentDidMount(){
   }
 
   render(){
-    return(
+    return (
       <div className="tournament-view">
-        <ul>{this.state.post}</ul>
+        <Dropdown isOpen={this.props.division} isClose={this.props.tournament} size="lg" toggle={this.props.tournament}>
+          <DropdownToggle
+            tag="span"
+            onClick={this.props.tournament}
+            data-toggle="dropdown"
+            aria-expanded={this.state.dropdownOpen}>
+            Tournaments
+          </DropdownToggle>
+          <DropdownMenu>
+            <div onClick={this.state.division}>Age Group: {this.props.division}</div>
+          </DropdownMenu>
+        </Dropdown>
       </div>
     );
   }
 };
+
 
 export default TournamentView
 //source Fetch All https://stackoverflow.com/questions/45001916/how-to-get-and-display-all-child-list-from-firebase-react
