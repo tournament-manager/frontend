@@ -3,7 +3,7 @@ export default (state={}, action) => {
 
   let takeAction = {};
 
-  takeAction['SET_STATE'] = storage => storage.games;
+  takeAction['SET_STATE'] = storage => storage.teams;
 
   return takeAction[type] ? takeAction[type](payload) : state;
 

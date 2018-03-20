@@ -3,10 +3,20 @@ import store from '../../lib/store';
 import {Provider} from 'react-redux';
 import {Route} from 'react-router-dom';
 import {AdminView} from '../admin';
+import {setStateFromStorage} from '../../actions';
+import {saveToLocalStorage} from '../../lib/local-storage'; 
+
+store.subscribe(() => {
+  saveToLocalStorage(store.getState());
+});
 
 export default class App extends React.Component{
 
-  
+  componentWillMount(){
+    let state = store.getState();
+    if(!state.tournaments && localStorage.tournaments) store.dispatch(setStateFromStorage());
+  }
+
   render(){
     return (
       <Provider store={store}>
