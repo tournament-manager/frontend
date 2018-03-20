@@ -27,16 +27,18 @@ export default class Tournament extends React.Component {
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-  render() {
-    return (
+  render(){
+    return(
       <h1>Welcome to Tournament Manager! Here Are Our Current Tournaments</h1>
       <h4>{this.state.ageGroup}</h4>
       <h5>{this.state.fields}</h5>
+      <Division landing={this.getOrSetState()} />
+
       <ul>
-        <li>{this.state.groupA}</li>
-        <li>{this.state.groupB}</li>
-        <li>{this.state.groupC}</li>
-        <li>{this.state.groupD}</li>
+        <li>Team A: {this.state.groupA}</li>
+        <li>Team B: {this.state.groupB}</li>
+        <li>Team C: {this.state.groupC}</li>
+        <li>Team D: {this.state.groupD}</li>
       </ul>
     );
   }
