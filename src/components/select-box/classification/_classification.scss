@@ -1,0 +1,21 @@
+
+.classification-value {
+  cursor: pointer;
+}
+
+.classification-list{
+  cursor: pointer;
+  max-height: 0;
+  overflow: hidden;
+  transition: 350ms;
+}
+
+.classification-list.visible{
+  max-height: 3em;
+  overflow: auto;
+  transition: 350ms;
+}
+
+.classification-item {
+  cursor: pointer;
+}
