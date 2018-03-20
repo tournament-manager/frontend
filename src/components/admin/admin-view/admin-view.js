@@ -4,8 +4,6 @@ import AdminViewTournament from '../admin-view-tournaments/admin-view-tournament
 import {TournamentSelect} from '../../select-box';
 import {connect} from 'react-redux';
 
-//const divisions = [{}];
-
 class AdminView extends React.Component{
   constructor(props){
     super(props);
