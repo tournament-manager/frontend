@@ -16,13 +16,57 @@ const setStateFromStorage = () => {
   };
 };
 
-const tournamentsSet = tournaments => ({action: 'TOURNAMENTS_SET', payload: tournaments});
+const tournamentSet = tournament => ({type: 'TOURNAMENT_SET', payload: tournament});
 
-const tournamentGetRequest = tour => dispatch => {
-  let token = localStorage.token;
-  return superagent.get(`${__API_URL__}/tournament`)
-    .set({'Authorization': `Bearer ${token}`})
-    .then(res =>  dispatch(tournamentsSet(res.body)));
+const tournamentSetAll = tournaments => ({type: 'TOURNAMENT_SET_ALL', payload: tournaments});
+
+const tournamentDelete = tournamentId => ({type: 'TOURNAMENT_DELETE', payload: tournamentId});
+
+const tournamentUpdate = tournament => ({type: 'TOURNAMENT_UPDATE', payload: tournament});
+
+
+const tournamentGetRequest = tournamentId => dispatch => {
+  return superagent.get(`${__API_URL__}/tournament/${tournamentId}`)
+    .then(res =>  dispatch(tournamentSet(res.body)));
 };
 
-export {tournamentsSet, tournamentGetRequest, setStateFromStorage};
+const tournamentAllGetRequest = () => dispatch => {
+  return superagent.get(`${__API_URL__}/tournament`)
+    .then(res =>  dispatch(tournamentSetAll(res.body)));
+};
+
+const tournamentCreateRequest = tournament => dispatch => {
+  let token = localStorage.token;
+  return superagent.post(`${__API_URL__}/tournament/create`)
+    .set({'Authorization': `Bearer ${token}`})
+    .send(tournament)
+    .then(res =>  dispatch(tournamentSet(res.body)));
+};
+
+const tournamentDeleteRequest = tournamentId => dispatch => {
+  let token = localStorage.token;
+  return superagent.delete(`${__API_URL__}/tournament/${tournamentId}`)
+    .set({'Authorization': `Bearer ${token}`})
+    .then(() =>  dispatch(tournamentDelete(tournamentId)));
+};
+
+const tournamentUpdateRequest = tournament => dispatch => {
+  let token = localStorage.token;
+  return superagent.put(`${__API_URL__}/tournament${tournament._id}`)
+    .set({'Authorization': `Bearer ${token}`})
+    .send(tournament)
+    .then(res =>  dispatch(tournamentUpdate(res.body)));
+};
+
+export {
+  tournamentSet,
+  tournamentSetAll,
+  tournamentDelete,
+  tournamentUpdate,
+  tournamentGetRequest,
+  tournamentAllGetRequest,
+  tournamentCreateRequest,
+  tournamentUpdateRequest,
+  setStateFromStorage,
+  tournamentDeleteRequest,
+};
