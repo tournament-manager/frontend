@@ -53,4 +53,5 @@ componentDidMount(){
   }
 };
 
+export default TournamentView
 //source https://stackoverflow.com/questions/45001916/how-to-get-and-display-all-child-list-from-firebase-react

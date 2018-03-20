@@ -22,3 +22,8 @@ Drop Down Menu/ Search Form
 only sign-in to create tournament
 general view shows all tournaments that you can filter through
 each viewed tournament will be stored into local storage
+
+#Resources
+Tournament View Page
+//source https://stackoverflow.com/questions/45001916/how-to-get-and-display-all-child-list-from-firebase-react
+
