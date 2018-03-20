@@ -8,9 +8,11 @@ export default class Tournament extends React.Component {
     super(props);
     this.state = {
       tournament: [],
+      division: [], //age group
+      classification: [], //boys or girls
       date: [],
       field: [],
-      post: ''
+      post: '',
     };
   };
 }
@@ -31,12 +33,17 @@ componentDidMount(){
         <p>
           {dataList}
           <br/>
-          {this.state.title[index]}
+          {this.state.tournament[index]}
           <br/>
-          {this.state.story[index]}
+          {this.state.division[index]}
+          <br/>
+          {this.state.classification[index]}
+          <br/>
+          {this.state.date[index]}
+          <br/>
+          {this.state.field[index]}
           <hr/>
         </p>
-
       );
 
       this.setState({
@@ -44,6 +51,11 @@ componentDidMount(){
       });
     });
   });
+
+  handleClick(e) {
+    e.preventDefault()
+    this.props.tournament.push('/');
+  }
   render(){
     return(
       <div className="tournament-view">
@@ -54,4 +66,5 @@ componentDidMount(){
 };
 
 export default TournamentView
-//source https://stackoverflow.com/questions/45001916/how-to-get-and-display-all-child-list-from-firebase-react
+//source Fetch All https://stackoverflow.com/questions/45001916/how-to-get-and-display-all-child-list-from-firebase-react
+//source fetch one

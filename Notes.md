@@ -24,6 +24,9 @@ general view shows all tournaments that you can filter through
 each viewed tournament will be stored into local storage
 
 #Resources
-Tournament View Page
+Tournament View Page: View/Fetch All Tournaments
 //source https://stackoverflow.com/questions/45001916/how-to-get-and-display-all-child-list-from-firebase-react
+
+On click of a Tournament, View Age/Boys/Girls/Team Rendered from Schema
+https://stackoverflow.com/questions/46586656/reactjs-display-fetch-response-onclick
 
