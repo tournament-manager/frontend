@@ -16,4 +16,5 @@ const userSignupRequest = user => dispatch => {
     .send(user)
     .then(res => dispatch(setToken(res.text)));
 };
+
 export {setToken, userSigninRequest, userSignupRequest};

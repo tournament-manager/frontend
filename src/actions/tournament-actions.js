@@ -59,10 +59,6 @@ const tournamentUpdateRequest = tournament => dispatch => {
 };
 
 export {
-  tournamentSet,
-  tournamentSetAll,
-  tournamentDelete,
-  tournamentUpdate,
   tournamentGetRequest,
   tournamentAllGetRequest,
   tournamentCreateRequest,

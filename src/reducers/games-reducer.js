@@ -7,6 +7,22 @@ export default (state={}, action) => {
 
   takeAction['RESET_STATE'] = () => {};
 
+  takeAction['GAME_SET'] = game => {
+    let tempState = {...state};
+    if(!tempState[game.division]) tempState[game.division] = [];
+    tempState[game.division].push(game);
+    return tempState;
+  };
+
+  takeAction['GAME_SET_ALL'] = games => {
+    let tempState = {...state};
+    games.forEach(game => {
+      if(!tempState[game.division]) tempState[game.division] = [];
+      tempState[game.division].push(game);
+    });
+    return tempState;
+  };
+
   return takeAction[type] ? takeAction[type](payload) : state;
 
 };
