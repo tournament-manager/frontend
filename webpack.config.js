@@ -1,66 +1,53 @@
 'use strict';
 
-require('dotenv').config({path: `${__dirname}/.dev.env`});
-let production = process.env.NODE_ENV === 'production';
+require('dotenv').config({ path: `${__dirname}/.dev.env` });
+const production = process.env.NODE_ENV === 'production';
 
+const { DefinePlugin, EnvironmentPlugin } = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
-const {DefinePlugin, EnvironmentPlugin} = require('webpack');
+const ExtractPlugin = require('extract-text-webpack-plugin');
 
 let plugins = [
-  new HtmlPlugin({template: `${__dirname}/src/index.html`}),
-  new ExtractTextPlugin('bundle-[hash].css'),
+  new EnvironmentPlugin(['NODE_ENV']),
+  new ExtractPlugin('bundle-[hash].css'),
+  new HtmlPlugin({ template: `${__dirname}/src/index.html` }),
   new DefinePlugin({
     __DEBUG__: JSON.stringify(!production),
     __API_URL__: JSON.stringify(process.env.API_URL),
   }),
-  new EnvironmentPlugin(['NODE_ENV']),
 ];
 
-if (production){
-  plugins = plugins.concat([
-    new CleanPlugin(),
-    new UglifyPlugin(),
-  ]);
+if(production) {
+  plugins = plugins.concat([new CleanPlugin(), new UglifyPlugin()]);
 }
 
 module.exports = {
-  devtool: production ? undefined : 'eval-source-map',
-  devServer: {historyApiFallback: true},
+  plugins,
   entry: `${__dirname}/src/main.js`,
+  devServer: {
+    historyApiFallback: true,
+  },
+  devtool: production ? undefined : 'eval',
   output: {
     path: `${__dirname}/build`,
     filename: 'bundle-[hash].js',
-    publicPath: '/',
+    publicPath: process.env.CDN_URL,
   },
-  plugins,
   module: {
     rules: [
-      { 
+      {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: 'babel-loader',
+        loader: 'babel-loader',
       },
       {
         test: /\.scss$/,
-        loaders: ExtractTextPlugin.extract(['css-loader', 'sass-loader']),
+        loader: ExtractPlugin.extract(['css-loader', 'sass-loader']),
       },
       {
-        test: /\.(jpg|jpeg|gif|png|tif|tiff)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 6000,
-              name: 'images/[name].[ext]',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(ttf|eot|woff|woff2|svg|glyph)$/,
+        test: /\.(woff|woff2|ttf|eot|glyph|\.svg)$/,
         use: [
           {
             loader: 'url-loader',
@@ -72,13 +59,25 @@ module.exports = {
         ],
       },
       {
-        test: /\.(mp3|mp4|wav)$/,
+        test: /\.(jpg|jpeg|gif|png|tiff|svg)$/,
+        exclude: /\.glyph.svg/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 6000,
+              name: 'image/[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(mp3|aac|aiff|wav|flac|m4a|mp4|ogg)$/,
+        exclude: /\.glyph.svg/,
         use: [
           {
             loader: 'file-loader',
-            options: {
-              name: 'audio/[name].[ext]',
-            },
+            options: { name: 'audio/[name].[ext]' },
           },
         ],
       },
