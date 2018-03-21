@@ -1,7 +1,6 @@
 import superagent from 'superagent';
 
 const setStateFromStorage = () => {
-  console.log('storage', 'fired');
   let storage = {
     tournaments: localStorage.tournaments ? JSON.parse(localStorage.tournaments) : [],
     divisions: localStorage.divisions ? JSON.parse(localStorage.divisions) : {},
@@ -9,7 +8,7 @@ const setStateFromStorage = () => {
     games: localStorage.teams ? JSON.parse(localStorage.games) : {},
     token: localStorage.token ? localStorage.token : null,
   };
-  console.log('storage', storage);
+
   return {
     type: 'SET_STATE',
     payload: storage,
