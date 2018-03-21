@@ -55,20 +55,3 @@ export default class TournamentSelect extends React.Component{
   }
 }
 
-
-
-
-
-
-
-
-
-{/* <ul>
-{this.props.tournaments.map(tournament => (
-  <li className="tournament-select-item"
-    key={tournament._id}>
-      tournament.name
-  </li>
-))}
-</ul>
-</div> */}
