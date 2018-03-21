@@ -1,3 +1,3 @@
-import TournamentSelect from './tournament-select/tournament-select';
+import TournamentForm from './tournament-form/tournament-form';
 
-export {TournamentSelect};
+export {TournamentForm};

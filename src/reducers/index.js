@@ -1,8 +1,16 @@
-// import {combineReducers} from 'redux';
+import {combineReducers} from 'redux';
+import divisionsReducer from './divisions-reducer';
+import tournamentsReducer from './tournaments-reducer';
+import gamesReducer from './games-reducer';
+import teamsReducer from './teams-reducer';
+import signinSignup from './signin-signup-reducer';
 
-
-// export default combineReducers(
-//   {
- 
-//   }
-// );
+export default combineReducers(
+  {
+    divisions: divisionsReducer ,
+    tournaments: tournamentsReducer ,
+    games: gamesReducer,
+    teams: teamsReducer,
+    token: signinSignup,
+  }
+);
