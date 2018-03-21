@@ -32,7 +32,7 @@ module.exports = {
   entry: `${__dirname}/src/main.js`,
   output: {
     path: `${__dirname}/build`,
-    filename: 'bungle-[hash].js',
+    filename: 'bundle-[hash].js',
     publicPath: '/',
   },
   plugins,
