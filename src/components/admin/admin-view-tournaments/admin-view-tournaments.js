@@ -10,7 +10,6 @@ export default class AdminViewTournament extends React.Component{
   }
 
   componentWillReceiveProps(nextProps){
-    // if (!nextProps.tournament) 
     this.setState({tournament: nextProps.tournament});
   }
 
