@@ -23,7 +23,7 @@ export default class AgeGroupList extends React.Component{
   handleChange(textValue){
     this.toggleVisible();
     this.setState({age: textValue});
-    this.props.onSelect({target:{name: 'ageGroup', value: textValue}});
+    this.props.onSelect({target:{name: 'agegroup', value: textValue}});
   }
 
   render(){
