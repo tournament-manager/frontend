@@ -5,7 +5,7 @@ export default (state={}, action) => {
 
   takeAction['SET_STATE'] = storage => storage.games;
 
-  takeAction['RESET_STATE'] = () => {};
+  takeAction['RESET_STATE'] = () => ({});
 
   takeAction['GAME_SET'] = game => {
     let tempState = {...state};

@@ -5,7 +5,7 @@ export default (state={}, action) => {
 
   takeAction['SET_STATE'] = storage => storage.divisions;
 
-  takeAction['RESET_STATE'] = () => {};
+  takeAction['RESET_STATE'] = () => ({});
 
   takeAction['DIVISION_SET'] = division => {
     let tempState = {...state};
@@ -26,7 +26,7 @@ export default (state={}, action) => {
   takeAction['DIVISION_UPDATE'] = divisionUpdate => {
     let tempState = {...state};
     tempState[divisionUpdate.tournament] = tempState[divisionUpdate.tournament].map(division => 
-      division.tournament === divisionUpdate.tournament
+      division._id === divisionUpdate._id
         ? divisionUpdate
         : division);
     return tempState;
@@ -35,7 +35,7 @@ export default (state={}, action) => {
   takeAction['DIVISION_DELETE'] = divisionDelete => {
     let tempState = {...state};
     tempState[divisionDelete.tournament] = tempState[divisionDelete.tournament].filter(division => 
-      division.tournament !== divisionDelete.tournament);
+      division._id !== divisionDelete._id);
     return tempState;
   };
 

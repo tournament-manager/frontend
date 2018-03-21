@@ -65,7 +65,7 @@ describe('Tournament Reducer Test', function(){
     });
 
     it('Should not contain the tournament', () => {
-      expect(this.deleteTournament.some(val => val.name !== 'Rug Rat Rumble')).toBe(true);
+      expect(this.deleteTournament.every(val => val.name !== 'Rug Rat Rumble')).toBe(true);
     });
   });
 
