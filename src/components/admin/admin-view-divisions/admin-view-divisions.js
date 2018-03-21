@@ -1,6 +1,7 @@
 import './_admin-view-divisions.scss';
 import React from 'react';
 import {DivisionForm} from '../../division';
+import {GroupTeamAssignment} from '../../groups';
 
 export default class AdminViewDivisions extends React.Component{
   constructor(props){
@@ -22,6 +23,7 @@ export default class AdminViewDivisions extends React.Component{
           {this.state.divisions.length ? this.state.divisions.map((division, i) => (
             <li key={i} className="admin-view-division-item">
               <DivisionForm  division={division} />
+              <GroupTeamAssignment />
             </li> 
           ) 
           )
