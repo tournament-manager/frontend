@@ -1,0 +1,21 @@
+
+.age-group-value {
+  cursor: pointer;
+}
+
+.age-group-list{
+  cursor: pointer;
+  max-height: 0;
+  overflow: hidden;
+  transition: 350ms;
+}
+
+.age-group-list.visible{
+  max-height: 3em;
+  overflow: auto;
+  transition: 350ms;
+}
+
+.age-group-item {
+  cursor: pointer;
+}
