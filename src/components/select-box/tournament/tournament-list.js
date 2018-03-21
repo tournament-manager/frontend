@@ -12,10 +12,23 @@ export default class TournamentSelect extends React.Component{
     };
     this.toggleVisible = this.toggleVisible.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCreate = this.handleCreate.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (this.props.tournamentName !== nextProps.tournamentName)
+      this.setState({tournamentName: nextProps.tournamentName});
+  
   }
 
   toggleVisible(){
     this.setState({isVisible: !this.state.isVisible});
+  }
+
+  handleCreate(){
+    this.toggleVisible();
+    this.setState({tournamentName: ''});
+    this.props.onSelect('');
   }
 
   handleChange(tournament){
@@ -35,6 +48,7 @@ export default class TournamentSelect extends React.Component{
             <TournamentItem key={`${tournament._id}`} toggle={this.handleChange}
               tournament={tournament} />
           ) : undefined}
+          <li onClick={this.handleCreate}>Create New Tournament</li>
         </ul>
       </div>
     );

@@ -19,13 +19,14 @@ export default class AdminViewDivisions extends React.Component{
     return (
       <section className="admin-view-division-container">
         <ul>
-          {this.state.divisions.map((division, i) => (
+          {this.state.divisions.length ? this.state.divisions.map((division, i) => (
             <li key={i} className="admin-view-division-item">
               <DivisionForm  division={division} />
             </li> 
           ) 
-          )}
-          {this.state.divisions[this.state.divisions.length - 1].name ? 
+          )
+            : undefined}
+          { !this.state.divisions.length || this.state.divisions[this.state.divisions.length - 1].name  ? 
             <li className="add-division" 
               onClick={this.addDivision}>
             add new division

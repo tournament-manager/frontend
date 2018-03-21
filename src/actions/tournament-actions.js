@@ -1,7 +1,7 @@
 import superagent from 'superagent';
 
 const setStateFromStorage = () => {
-  
+  console.log('storage', 'fired');
   let storage = {
     tournaments: localStorage.tournaments ? JSON.parse(localStorage.tournaments) : [],
     divisions: localStorage.divisions ? JSON.parse(localStorage.divisions) : {},
@@ -9,7 +9,7 @@ const setStateFromStorage = () => {
     games: localStorage.teams ? JSON.parse(localStorage.games) : {},
     token: localStorage.token ? localStorage.token : null,
   };
-
+  console.log('storage', storage);
   return {
     type: 'SET_STATE',
     payload: storage,
@@ -52,10 +52,10 @@ const tournamentDeleteRequest = tournamentId => dispatch => {
 
 const tournamentUpdateRequest = tournament => dispatch => {
   let token = localStorage.token;
-  return superagent.put(`${__API_URL__}/tournament${tournament._id}`)
+  return superagent.put(`${__API_URL__}/tournament/${tournament._id}`)
     .set({'Authorization': `Bearer ${token}`})
     .send(tournament)
-    .then(res =>  dispatch(tournamentUpdate(res.body)));
+    .then(() =>  dispatch(tournamentUpdate(tournament)));
 };
 
 export {

@@ -3,6 +3,7 @@ import AdminViewDivisions from '../admin-view-divisions/admin-view-divisions';
 import AdminViewTournament from '../admin-view-tournaments/admin-view-tournaments';
 import {TournamentSelect} from '../../select-box';
 import {connect} from 'react-redux';
+import {tournamentCreateRequest, tournamentUpdateRequest} from '../../../actions/tournament-actions';
 
 class AdminView extends React.Component{
   constructor(props){
@@ -15,6 +16,7 @@ class AdminView extends React.Component{
   }
 
   selectTournament(tournament){
+    console.log('tournament', tournament);
     this.setState({tournament: tournament, divisions: this.props.divisions[tournament._id]});
   }
 
@@ -22,12 +24,13 @@ class AdminView extends React.Component{
     return (
       <section className="admin-view-container">
         <TournamentSelect tournaments={this.props.tournaments}
+          tournamentName={this.state.tournament.name}
           onSelect={this.selectTournament}/>
+        <AdminViewTournament tournament={this.state.tournament}
+          submitHandlers={this.props.tournamentFormHandlers}
+          selectTournament={this.selectTournament}/>
         {this.state.tournament ?
-          <React.Fragment>  
-            <AdminViewTournament tournament={this.state.tournament}/>
-            <AdminViewDivisions divisions={this.state.divisions}/>
-          </React.Fragment>  
+          <AdminViewDivisions divisions={this.state.divisions}/>
           : undefined}
       </section>
     );
@@ -39,4 +42,11 @@ const mapPropsToState = state => ({
   divisions: state.divisions,
 });
 
-export default connect(mapPropsToState, null)(AdminView);
+const mapDispatchToProps = dispatch => ({
+  tournamentFormHandlers: {
+    tournamentCreateRequest: tournament => dispatch(tournamentCreateRequest(tournament)),
+    tournamentUpdateRequest: tournament => dispatch(tournamentUpdateRequest(tournament)),
+  },
+});
+
+export default connect(mapPropsToState, mapDispatchToProps)(AdminView);
