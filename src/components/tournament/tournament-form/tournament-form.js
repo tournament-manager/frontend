@@ -3,11 +3,6 @@ import React from 'react';
 export default class TournamentForm extends React.Component{
   constructor(props){
     super(props);
-    // this.state = {
-    //   name: this.props.tournament.name || '',
-    //   dateStart: this.props.tournament.dateStart || '',
-    //   dateEnd: this.props.tournament.dateEnd || '',
-    // };
     this.state = {
       name: '',
       dateStart: '',
@@ -19,7 +14,6 @@ export default class TournamentForm extends React.Component{
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('nextProps', nextProps);
     if (!nextProps.tournament) return this.setState({name: '', dateStart: '', dateEnd: '', _id: ''});
     this.setState({
       _id: nextProps.tournament._id,

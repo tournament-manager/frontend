@@ -16,7 +16,6 @@ class AdminView extends React.Component{
   }
 
   selectTournament(tournament){
-    console.log('tournament', tournament);
     this.setState({tournament: tournament, divisions: this.props.divisions[tournament._id]});
   }
 
