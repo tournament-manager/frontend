@@ -9,11 +9,21 @@ export default class AdminViewTournament extends React.Component{
     };
   }
 
+  componentWillReceiveProps(nextProps){
+    // if (!nextProps.tournament) 
+    this.setState({tournament: nextProps.tournament});
+  }
+
   render(){
     return (
       <section className="admin-tournament-view-container"> 
         <h2>{this.state.tournament.name}</h2>
-        <TournamentForm tournament={this.state.tournament}/>
+        <TournamentForm tournament={this.state.tournament}
+          selectTournament={this.props.selectTournament}
+          onComplete={this.state.tournament.name 
+            ? this.props.submitHandlers.tournamentUpdateRequest
+            : this.props.submitHandlers.tournamentCreateRequest
+          }/>
       </section>
     );
   }
