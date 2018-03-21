@@ -33,7 +33,7 @@ export default class TeamSelect extends React.Component{
   handleChange(team){
     this.toggleVisible();
     this.setState({teamtName: team.name});
-    this.props.onSelect(team);
+    this.props.onSelect(this.props.groupSlot, team);
   }
 
   render(){

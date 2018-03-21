@@ -23,7 +23,7 @@ export default class AdminViewDivisions extends React.Component{
           {this.state.divisions.length ? this.state.divisions.map((division, i) => (
             <li key={i} className="admin-view-division-item">
               <DivisionForm  division={division} />
-              <GroupTeamAssignment />
+              <GroupTeamAssignment groupSlots={''}/>
             </li> 
           ) 
           )
