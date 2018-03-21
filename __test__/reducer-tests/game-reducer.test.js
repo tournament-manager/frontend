@@ -1,98 +1,53 @@
-import divisionsReducer from '../../src/reducers/divisions-reducer';
+import gamesReducer from '../../src/reducers/games-reducer';
 
-describe('Divisions Reducer Test', function(){
+describe('Games Reducer Test', function(){
  
-  describe('DIVISION_SET Test', () => {
+  describe('GAME_SET Test', () => {
 
     beforeAll(() => {
 
       this.action = {
-        type: 'DIVISION_SET',
-        payload: {name: 'boys U13', tournament: 11}, 
+        type: 'GAME_SET',
+        payload: {gamenumber: 1, division: 11}, 
       };
       
-      this.setDivision = divisionsReducer('', this.action);
+      this.setGame = gamesReducer('', this.action);
+      this.setAnotherGame = gamesReducer({'11': [{gamenumber: 2, division: 11}]}, this.action);
     });
     
     it('Should add a division to state', () => {
-      expect(this.setDivision).toBeInstanceOf(Object);
-      expect(this.setDivision).not.toBeNull();
+      expect(this.setGame).toBeInstanceOf(Object);
+      expect(this.setGame).not.toBeNull();
     });
 
     it('Should contain the tournament', () => {
-      expect(this.setDivision[11][0].name).toEqual('boys U13');
+      expect(this.setGame[11][0].gamenumber).toEqual(1);
+      expect(this.setAnotherGame[11][0].gamenumber).toEqual(2);
     });
   });
 
-  describe('DIVISION_SET_ALL Test', () => {
+  describe('GAME_SET_ALL Test', () => {
 
     beforeAll(() => {
       this.action = {
-        type: 'DIVISION_SET_ALL',
-        payload: [{name: 'boys U13', tournament: 11}, {name: 'boys U12', tournament: 11}], 
+        type: 'GAME_SET_ALL',
+        payload: [{gamenumber: 2, division: 11}, {gamenumber: 3, division: 11}], 
       };
       
-      this.setAllDivisions = divisionsReducer({'11': [{name: 'boys U10', tournament: 11}]}, this.action);
+      this.setAllGames = gamesReducer({'11': [{gamenumber: 1, division: 11}]}, this.action);
+      this.setMoreGames = gamesReducer('', this.action);
     });
     
     it('Should add a Division to state', () => {
-      expect(this.setAllDivisions).toBeInstanceOf(Object);
-      expect(this.setAllDivisions).not.toBeNull();
+      expect(this.setAllGames).toBeInstanceOf(Object);
+      expect(this.setAllGames).not.toBeNull();
     });
 
     it('Should contain multiple divisions', () => {
-      expect(this.setAllDivisions[11].length).toEqual(3);
+      expect(this.setAllGames[11].length).toEqual(3);
+      expect(this.setMoreGames[11].length).toEqual(2);
     });
   });
-
-  describe('DIVISION_DELETE Test', () => {
-
-    beforeAll(() => {
-      this.action = {
-        type: 'DIVISION_DELETE',
-        payload: {name: 'boys U13', tournament: 11, _id: 23},  
-      };
-
-      this.mockState = {'11': [{name: 'boys U10', tournament: 11, _id: 13}, {name: 'boys U11', tournament: 11, _id: 21}, {name: 'boys U13', tournament: 11, _id: 23}]};
-      
-      this.deleteDivision = divisionsReducer(this.mockState, this.action);
-    });
-    
-    it('Should delete a division from state', () => {
-      expect(this.deleteDivision).toBeInstanceOf(Object);
-      expect(this.deleteDivision).not.toBeNull();
-      expect(this.deleteDivision[11].length).toEqual(2);
-    });
-
-    it('Should not contain the division', () => {
-      expect(this.deleteDivision[11].every(val => val.name !== 'boys U13')).toBe(true);
-    });
-  });
-
-  describe('DIVISION_UPDATE Test', () => {
-
-    beforeAll(() => {
-      this.action = {
-        type: 'DIVISION_UPDATE',
-        payload: {name: 'girls U13', tournament: 11, _id: 23},
-      };
-
-      this.mockState = {'11': [{name: 'boys U10', tournament: 11, _id: 13}, {name: 'boys U11', tournament: 11, _id: 21}, {name: 'boys U13', tournament: 11, _id: 23}]};
-      
-      this.updateDivision = divisionsReducer(this.mockState, this.action);
-    });
-    
-    it('Should update a division from state', () => {
-      expect(this.updateDivision).toBeInstanceOf(Object);
-      expect(this.updateDivision).not.toBeNull();
-      expect(this.updateDivision[11].length).toEqual(3);
-    });
-
-    it('Should contain the updated division', () => {
-      expect(this.updateDivision[11].some(val => val.name === 'girls U13')).toBe(true);
-    });
-  });
-
 
   describe('RESET_STATE Test', () => {
 
@@ -100,7 +55,7 @@ describe('Divisions Reducer Test', function(){
       this.action = {
         type: 'RESET_STATE',
       };
-      this.resetState = divisionsReducer('', this.action);
+      this.resetState = gamesReducer('', this.action);
     });
   
     it('Should return a state that an empty array', () => {
@@ -114,10 +69,10 @@ describe('Divisions Reducer Test', function(){
 
       this.action = {
         type: 'SET_STATE',
-        payload: {divisions: {'11': [{name: 'boys U10', tournament: 11, _id: 13}]}},
+        payload: {games: {'11': [{name: 'boys U10', tournament: 11, _id: 13}]}},
       };
 
-      this.setState = divisionsReducer('', this.action);
+      this.setState = gamesReducer('', this.action);
     });
     
     it('Should set the state to the value of the division property', () => {
@@ -133,7 +88,7 @@ describe('Divisions Reducer Test', function(){
         type: 'SUBWAY_TOKEN',
         payload: 'Pelham_123',
       };
-      this.noAction = divisionsReducer(undefined, this.action);
+      this.noAction = gamesReducer(undefined, this.action);
     });
   
     it('Should return current state of an empty {}', () => {

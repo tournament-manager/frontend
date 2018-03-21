@@ -12,6 +12,7 @@ describe('Divisions Reducer Test', function(){
       };
       
       this.setDivision = divisionsReducer('', this.action);
+      this.setAnotherDivision = divisionsReducer({'11': [{name: 'boys U10', tournament: 11}]}, this.action);
     });
     
     it('Should add a division to state', () => {
@@ -21,6 +22,7 @@ describe('Divisions Reducer Test', function(){
 
     it('Should contain the tournament', () => {
       expect(this.setDivision[11][0].name).toEqual('boys U13');
+      expect(this.setAnotherDivision[11][0].name).toEqual('boys U10');
     });
   });
 
@@ -33,6 +35,7 @@ describe('Divisions Reducer Test', function(){
       };
       
       this.setAllDivisions = divisionsReducer({'11': [{name: 'boys U10', tournament: 11}]}, this.action);
+      this.setMoreDivisions = divisionsReducer('', this.action);
     });
     
     it('Should add a Division to state', () => {
@@ -42,6 +45,7 @@ describe('Divisions Reducer Test', function(){
 
     it('Should contain multiple divisions', () => {
       expect(this.setAllDivisions[11].length).toEqual(3);
+      expect(this.setMoreDivisions[11].length).toEqual(2);
     });
   });
 
