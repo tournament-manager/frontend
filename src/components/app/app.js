@@ -5,6 +5,10 @@ import {Route} from 'react-router-dom';
 import {AdminView} from '../admin';
 import {setStateFromStorage} from '../../actions/tournament-actions';
 import {saveToLocalStorage} from '../../lib/local-storage';
+import {tournamentAllGetRequest} from '../../actions/tournament-actions';
+import {divisionAllGetRequest} from '../../actions/division-actions';
+import {teamAllGetRequest} from '../../actions/team-actions';
+
 
 store.subscribe(() => {
   saveToLocalStorage(store.getState());
@@ -13,8 +17,19 @@ store.subscribe(() => {
 export default class App extends React.Component{
 
   componentWillMount(){
-    let state = store.getState();
-    if(!state.tournaments.length && localStorage.tournaments) store.dispatch(setStateFromStorage());
+
+    Promise.all([
+      store.dispatch(tournamentAllGetRequest()),
+      store.dispatch(divisionAllGetRequest()),
+      store.dispatch(teamAllGetRequest()),
+    ])
+      .then(() => {
+        let state = store.getState();
+        if(!state.tournaments.length && localStorage.tournaments) store.dispatch(setStateFromStorage());
+      }
+      )
+      .catch(console.error);
+
   }
 
   render(){
