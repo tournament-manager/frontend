@@ -8,31 +8,30 @@ export default class Tournament extends React.Component {
   constructor() {
     super();
     this.state = {
-      //tournament: [],
+      groupA: [],
+      groupB: [],
+      groupC: [],
+      groupD: [],
       // name: [],
       // agegroup: [],
       // classification: [],
       // fields: [],
-      division: [],
-      //create a get all division in actions
-      //save that data in to state of componenet
-      //use that state to render out data
 
     };
   }
 
   componentDidMount() {
-    let initialDivision = [];
+    let initialTournament = [];
     fetch('https://swapi.co/api/planets/') //plug in mongo tournament schema here
       .then(response => {
         return response.json();
       }).then(data => {
-        initialDivision = data.results.map((divisions) => {
-          return divisions;
+        initialTournament = data.results.map((tournaments) => {
+          return tournaments;
         });
-        console.log(initialDivision);
+        console.log(initialTournament);
         this.setState({
-          tournament: initialDivision,
+          tournament: initialTournament,
         });
       });
   }
@@ -40,9 +39,7 @@ export default class Tournament extends React.Component {
   render() {
     return (
       <div>
-        <h3>
-          <Division state={this.state}/>
-        </h3>
+        <Division state={this.state} />
       </div>
     );
   }
