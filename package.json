@@ -19,15 +19,18 @@
       "__DEBUG__": false,
       "process.env": {
         "NODE_ENV": "production"
-      }
-    },
-    "verbose": true,
-    "collectCoverage": true,
-    "coverageDirectory": "./coverage",
-    "coveragePathIgnorePatterns": [
-      "/scss$/",
-      "/__test__/"
-    ]
+      },
+      "moduleNameMapper": {
+        "^.+\\.(css|scss)$": "identity-obj-proxy"
+      },
+      "testEnvironment": "jsdom",
+      "collectCoverage": true,
+      "coverageDirectory": "./coverage",
+      "coveragePathIgnorePatterns": [
+        "/scss$/",
+        "/__test__/"
+      ]
+    }
   },
   "keywords": [],
   "author": "Code Fellows, LLC",
