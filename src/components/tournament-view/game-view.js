@@ -3,6 +3,7 @@ import React from 'react';
 import Division from '../../../../backend/model/division-model';
 import mongoose from 'mongoose';
 import TournamentForm from '../../components/tournament-form';
+import { Link } from 'react-router-dom';
 
 export default class Tournament extends React.Component {
   constructor() {
@@ -18,6 +19,7 @@ export default class Tournament extends React.Component {
       // fields: [],
 
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -39,7 +41,7 @@ export default class Tournament extends React.Component {
   render() {
     return (
       <div>
-        <Division state={this.state} />
+        <Link to={this.state.division}><Division state={this.state} /></Link>
       </div>
     );
   }

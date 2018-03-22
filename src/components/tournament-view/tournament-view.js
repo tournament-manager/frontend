@@ -1,6 +1,6 @@
 import React from 'react';
 //import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'; //so cool!
-import Division from '../../../../backend/model/tournament-model';
+// import Division from '../../../../backend/model/tournament-model';
 import mongoose from 'mongoose';
 import TournamentForm from '../../components/tournament-form';
 
