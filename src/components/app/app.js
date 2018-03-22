@@ -9,7 +9,6 @@ import {tournamentAllGetRequest} from '../../actions/tournament-actions';
 import {divisionAllGetRequest} from '../../actions/division-actions';
 import {teamAllGetRequest} from '../../actions/team-actions';
 
-import {userSignupRequest, userSigninRequest} from '../../actions/signin-signup-actions';
 
 store.subscribe(() => {
   saveToLocalStorage(store.getState());
@@ -18,18 +17,6 @@ store.subscribe(() => {
 export default class App extends React.Component{
 
   componentWillMount(){
-
-    if (!localStorage.token){
-      store.dispatch(userSignupRequest({
-        email: 'kevin@kevin.com',
-        fullname: 'Kevin Miller',
-        password: 'password',
-        notification: true,
-      }))
-        .catch(() => {
-          store.dispatch(userSigninRequest({username: 'kevin@kevin.com' , password:'password'}));
-        });
-    }
 
     Promise.all([
       store.dispatch(tournamentAllGetRequest()),
