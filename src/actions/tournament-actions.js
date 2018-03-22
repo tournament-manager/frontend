@@ -7,6 +7,7 @@ const setStateFromStorage = () => {
     teams: localStorage.teams ? JSON.parse(localStorage.teams) : {},
     games: localStorage.teams ? JSON.parse(localStorage.games) : {},
     token: localStorage.token ? localStorage.token : null,
+    adminTournaments: localStorage.adminTournaments ? JSON.parse(localStorage.adminTournaments) : [],
   };
 
   return {
@@ -22,7 +23,6 @@ const tournamentSetAll = tournaments => ({type: 'TOURNAMENT_SET_ALL', payload: t
 const tournamentDelete = tournamentId => ({type: 'TOURNAMENT_DELETE', payload: tournamentId});
 
 const tournamentUpdate = tournament => ({type: 'TOURNAMENT_UPDATE', payload: tournament});
-
 
 const tournamentGetRequest = tournamentId => dispatch => {
   return superagent.get(`${__API_URL__}/tournament/${tournamentId}`)

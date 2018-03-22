@@ -1,21 +1,43 @@
 
-.age-group-value {
-  cursor: pointer;
+.age-group-list-wrap {
+  width: 50%;
+  box-sizing: border-box;
+  line-height: 2.5em;
+  text-indent: .5em;
+  background-color: #eee;
+  border-radius: .25em;
+  margin-bottom: 1em;
+  position: relative;
 }
 
-.age-group-list{
+.age-group-value {
+  cursor: pointer;
+  font-size: 1.25em;
+  border-radius: .2em;
+  background-color: #fff;
+}
+
+.age-group-list {
+  z-index: 9;
+  position: absolute;
+  width: 100%;
   cursor: pointer;
   max-height: 0;
   overflow: hidden;
   transition: 350ms;
 }
 
-.age-group-list.visible{
-  max-height: 3em;
+.age-group-list.visible {
+  max-height: 30vh;
   overflow: auto;
   transition: 350ms;
 }
 
 .age-group-item {
   cursor: pointer;
+  background-color: #fff;
+}
+
+.age-group-item:nth-of-type(odd) {
+  background-color: #eee;
 }
