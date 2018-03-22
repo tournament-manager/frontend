@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 //import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'; //so cool!
 // import Division from '../../../../backend/model/tournament-model';
 
@@ -31,6 +32,9 @@ export default class TournamentView extends React.Component {
       <div>
         <h1>Here are all the tournaments</h1>
         <h4>{/*<TournamentView state={this.state} />*/}</h4>
+
+
+        <Link to ="./">Home</Link>
       </div>
     );
   }

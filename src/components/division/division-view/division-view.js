@@ -1,7 +1,10 @@
 import React from 'react';
-// import TournamentForm from '../../components/tournament-form';
+import {Link} from 'react-router-dom';
+//import GameView from '../../game/game-view';
+import {connect} from 'react-redux';
 
-export default class DivisionView extends React.Component {
+
+class DivisionView extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -19,27 +22,37 @@ export default class DivisionView extends React.Component {
   }
 
   componentDidMount() {
-    let initialDivision = [];
-    fetch('https://swapi.co/api/planets/') //plug in mongo tournament schema here
-      .then(response => {
-        return response.json();
-      }).then(data => {
-        initialDivision = data.results.map((divisions) => {
-          return divisions;
-        });
-        console.log(initialDivision);
-        this.setState({
-          tournament: initialDivision,
-        });
-      });
+  //  let initialDivision = [];
+    // fetch('https://swapi.co/api/planets/') //plug in mongo tournament schema here
+    //   .then(response => {
+    //     return response.json();
+    //   }).then(data => {
+    //     initialDivision = data.results.map((divisions) => {
+    //       return divisions;
+    //     });
+    //     console.log(initialDivision);
+    //     this.setState({
+    //       tournament: initialDivision,
+    //     });
+    //   });
   }
 
   render() {
     return (
       <div>
         <h1> Select Age Group</h1>
-        <h4>{/*<DivisionView state={this.state}/>*/}</h4>
+        <h4><Link to="/games">Games: <DivisionView state={this.state}/></Link></h4>
+
+        <Link to ="./">Home</Link>
       </div>
     );
   }
 }
+
+
+const mapStateToProps = state => ({
+  division: state.division,
+  game: state.game,
+});
+
+export default connect(mapStateToProps, null)(DivisionView);

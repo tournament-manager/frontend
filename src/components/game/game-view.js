@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class GameView extends React.Component {
   constructor(props) {
@@ -33,6 +34,8 @@ export default class GameView extends React.Component {
       <div>
         <h1>Here are all the games in your division</h1>
         <h4>{/*<TournamentView state={this.state} />*/}</h4>
+
+        <Link to ="./">Home</Link>
       </div>
     );
   }
