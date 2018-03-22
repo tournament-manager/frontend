@@ -1,4 +1,4 @@
-Tournament Manger
+### Tournament Manger
 User Stories
 As an admininstrator, before the tournament starts, I want to be able to create a tournament flight - a set of games for a given age and class (gender and/or skill level). I also want to be able to create multiple flights to make a tournament.
 
