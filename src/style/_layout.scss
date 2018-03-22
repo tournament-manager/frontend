@@ -1,0 +1,99 @@
+@import './vars';
+
+main {
+  width: 98vw;
+  max-width: 680px;
+  min-width: 480px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 4em;
+  color: $primary-text-color;
+  margin: .5em auto;
+  text-align: center;
+}
+
+section {
+  margin-bottom: 1em;
+}
+
+.admin-view-container {
+  width: 90%;
+  margin: 0 auto;
+
+  section {
+    padding: 1.25em;
+    background-color: rgba(255, 255,255, 0.3);
+    border-radius: .25em;
+  }
+
+} 
+
+.admin-tournament-view-container {
+  margin-top: 1em;
+  
+  h2 {
+    font-size: 2em;
+    margin: .5em;
+  }
+
+}
+
+.tournament-form {
+
+  input {
+    display: block;
+    margin: .5em 0;
+    font-size: 1.25em;
+    text-indent: .25em;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tournament-form-btn-wrap {
+    text-align: right;
+  }
+
+  button {
+    font-size: 1em;
+    padding: .25em .75em;
+    border-radius: .25em;
+    margin-left: .5em;
+  }
+
+}
+
+.division-form {
+
+  input {
+    display: block;
+    margin: .5em 0;
+    font-size: 1.25em;
+    text-indent: .25em;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .division-form-btn-wrap {
+    text-align: right;
+    margin-bottom: 1em;
+  }
+
+  button {
+    font-size: 1em;
+    padding: .25em .75em;
+    border-radius: .25em;
+    margin-left: .5em;
+
+  }
+
+}
+
+.add-division {
+  span {
+    background-color: #fff;
+    padding: .25em .75em;
+    border-radius: .2em;
+  }
+}
