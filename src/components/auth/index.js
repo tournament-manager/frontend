@@ -1,5 +1,6 @@
 import React from 'react';
 import {renderIf} from '../../lib/utils';
+import {Redirect} from 'react-router-dom';
 
 export default class AuthForm extends React.Component {
   constructor(props) {
@@ -32,14 +33,15 @@ export default class AuthForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let { fullname, email, password, notification } = this.state;
-    console.log(this.state.fullname, this.state.email, this.state.password);
+    //console.log(this.state.fullname, this.state.email, this.state.password);
     this.props.onComplete({ fullname, email, password, notification })
       .then(() => this.setState({ fullname: '', email: '', password: '' }))
-      .then(() => this.props.history.push('/dashboard'))
+      //.then(() => this.props.history.push('/dashboard'))
       .catch(error => this.setState({error}));
   }
 
   render() {
+    if (localStorage.token) return <Redirect to='/admin' />;
     return (
       <form
         className="auth-form"

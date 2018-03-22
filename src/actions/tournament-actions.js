@@ -5,7 +5,7 @@ const setStateFromStorage = () => {
     tournaments: localStorage.tournaments ? JSON.parse(localStorage.tournaments) : [],
     divisions: localStorage.divisions ? JSON.parse(localStorage.divisions) : {},
     teams: localStorage.teams ? JSON.parse(localStorage.teams) : {},
-    games: localStorage.teams ? JSON.parse(localStorage.games) : {},
+    games: localStorage.games ? JSON.parse(localStorage.games) : {},
     token: localStorage.token ? localStorage.token : null,
     adminTournaments: localStorage.adminTournaments ? JSON.parse(localStorage.adminTournaments) : [],
   };

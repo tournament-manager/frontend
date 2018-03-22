@@ -14,20 +14,25 @@ class Landing extends React.Component {
   }
 
   render () {
-    console.log('__LANDING_PROPS__', this.props);
+    //console.log('__LANDING_PROPS__', this.props);
     let {params} = this.props.match;
     let onComplete = params.auth === 'signin'
       ? this.props.signin
       : this.props.signup;
-
+     
     return (
-      <div className="landing-container">
-        <h1> Tournaments! </h1>
-        <h3>Please {this.props.match.params.auth === 'signin' ? 'Sign In' : 'Sign Up'}</h3>
-        <AuthForm
-          auth={params.auth}
-          history={this.props.history}
-          onComplete={onComplete}/>
+      <div>
+        {!localStorage.token ? 
+          <div className="landing-container">
+        
+            <h3>Please {this.props.match.params.auth === 'signin' ? 'Sign In' : 'Sign Up'}</h3>
+            <AuthForm
+              auth={params.auth}
+              history={this.props.history}
+              onComplete={onComplete}/>
+              
+          </div>
+          : undefined}
       </div>
     );
   }

@@ -42,7 +42,7 @@ export default class TournamentSelect extends React.Component{
       <div className="tournament-list-wrap">
         <div className='tournament-value'
           onClick={this.toggleVisible}>
-          {this.state.tournamentName || '--'}</div>
+          {this.state.tournamentName || <span className="tournament-select-placeholder" >select a tournament</span>}</div>
         <ul className={`tournament-list${this.state.isVisible ? ' visible' : ''}`}>
           {this.props.tournaments.length ? this.props.tournaments.map(tournament => 
             <TournamentItem key={`${tournament._id}`} toggle={this.handleChange}

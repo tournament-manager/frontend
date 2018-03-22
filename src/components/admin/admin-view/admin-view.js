@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import AdminViewDivisions from '../admin-view-divisions/admin-view-divisions';
 import AdminViewTournament from '../admin-view-tournaments/admin-view-tournaments';
 import {TournamentSelect} from '../../select-box';
@@ -26,6 +27,7 @@ class AdminView extends React.Component{
   }
 
   render(){
+    if (!localStorage.token) return <Redirect to='/' />;
     return (
       <section className="admin-view-container">
         <TournamentSelect tournaments={this.props.tournaments}

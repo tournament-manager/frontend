@@ -31,7 +31,7 @@ export default class AgeGroupList extends React.Component{
       <div className="age-group-list-wrap">
         <div className='age-group-value'
           onClick={this.toggleVisible}>
-          {this.state.age || '--'}</div>
+          {this.state.age || <span className="age-group-select-placeholder" >select age group</span>}</div>
         <ul className={`age-group-list${this.state.isVisible ? ' visible' : ''}`}>
           {ageGroups.map((age, i) => 
             <AgeGroupItem key={`${i}_${age}`} toggle={this.handleChange}
