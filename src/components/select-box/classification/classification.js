@@ -28,7 +28,7 @@ export default class ClassificationSelect extends React.Component{
         <div className='classification-value'
           onClick={this.toggleVisible}>
           {this.state.classification || '--'}</div>
-        <ul className={`classification-list${this.state.isVisible ? 'visible' : ''}`}>
+        <ul className={`classification-list${this.state.isVisible ? ' visible' : ''}`}>
           <li className="classification-item" 
             onClick={this.handleChange}>boys</li>
           <li className="classification-item" 

@@ -4,6 +4,7 @@ import tournamentsReducer from './tournaments-reducer';
 import gamesReducer from './games-reducer';
 import teamsReducer from './teams-reducer';
 import signinSignup from './signin-signup-reducer';
+import adminTournamentsReducer from './admin-tournaments-reducer';
 
 export default combineReducers(
   {
@@ -12,5 +13,6 @@ export default combineReducers(
     games: gamesReducer,
     teams: teamsReducer,
     token: signinSignup,
+    adminTournaments: adminTournamentsReducer,
   }
 );
