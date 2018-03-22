@@ -45,7 +45,7 @@ export default class TournamentForm extends React.Component{
     return (
       <form className="tournament-form" onSubmit={this.handleSubmit}>
         <input type="text" name="name"
-          placeholder="Name" 
+          placeholder="Tournament Name" 
           value={this.state.name} 
           onChange={this.handleChange}/>
 

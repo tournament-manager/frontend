@@ -3,6 +3,60 @@
 @import 'base';
 @import 'layout';
 
+$primary-color: #5D9731;
+$secondary-color: #3a65aa;
+
+* {
+  box-sizing: border-box;
+  font: 1em "Fira Sans", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
 
 
+input {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+}
 
+h1 {
+  color: $primary-color;
+  font-size: 2em;
+  text-align: center;
+}
+
+h3 {
+  color: $secondary-color;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+button {
+    background-color: $primary-color; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 11px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 40%;
+}
+
+.container {
+  display: block;
+  margin-bottom: 20px;
+ }
+
+ .input {
+   margin-right: 20px;
+ }
+
+ .error {
+   border: 3px solid red;
+   margin-right: 20px;
+ }
