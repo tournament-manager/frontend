@@ -9,6 +9,7 @@ import {saveToLocalStorage} from '../../lib/local-storage';
 import {tournamentAllGetRequest} from '../../actions/tournament-actions';
 import {divisionAllGetRequest} from '../../actions/division-actions';
 import {teamAllGetRequest} from '../../actions/team-actions';
+import {adminTournamentsGetRequest} from '../../actions/admin-tournaments-actions';
 import {setToken} from '../../actions/signin-signup-actions';
 import {AppNav} from './';
 
@@ -28,13 +29,13 @@ export default class App extends React.Component{
       store.dispatch(teamAllGetRequest()),
     ])
       .then(() => {
+        if(store.getState().token) return store.dispatch(adminTournamentsGetRequest());
+      })
+      .then(() => {
         let state = store.getState();
         if(!state.tournaments.length && localStorage.tournaments) store.dispatch(setStateFromStorage());
-        if (!state.token && localStorage.token) store.dispatch(setToken(localStorage.token));
-      }
-      )
+      })
       .catch(console.error);
-
   }
 
   render(){
@@ -43,7 +44,7 @@ export default class App extends React.Component{
         <React.Fragment>
           {store.getState().token ? <AppNav/> : undefined}
           <main>
-            <h1> Tournament! </h1>
+            <h1>Tournament!</h1>
             <Route exact path="/" component={Landing}/>
             <Route exact path="/admin" component={AdminView}/>
           </main>
