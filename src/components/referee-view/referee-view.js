@@ -1,14 +1,15 @@
 import React from 'react';
 import mongoose from 'mongoose';
+import Game from '../../../../backend/model/game-model';
 
 class RefereeView extends React.Component{
   constructor(props) {
     super(props);
     this.state= {
-      gamenumber: []
-      teamA: [],
+      gamenumber: [],
+      teamA: '',
       teamAResult: '',
-      teamBResult: ''
+      teamBResult: '',
     };
   }
 
