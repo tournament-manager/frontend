@@ -1,3 +1,3 @@
 import TournamentForm from './tournament-form/tournament-form';
-
-export {TournamentForm};
+import TournamentView from './tournament-view/tournament-view';
+export {TournamentForm, TournamentView};
