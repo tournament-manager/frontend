@@ -9,6 +9,18 @@ export default class Tournament extends React.Component {
     super();
     this.state = {
       tournament: [],
+      name: [],
+      agegroup: [],
+      classification: [],
+      fields: [],
+      'groupA': [],
+      'groupB': [{ type: mongoose.Schema.Types.ObjectId, ref: 'game' }],
+      'groupC': [{ type: mongoose.Schema.Types.ObjectId, ref: 'game' }],
+      'groupD': [{ type: mongoose.Schema.Types.ObjectId, ref: 'game' }],
+      'consolidation': [{ type: mongoose.Schema.Types.ObjectId, ref: 'game' }],
+      'semiFinal': [{ type: mongoose.Schema.Types.ObjectId, ref: 'game' }],
+      'final': [{
+        type: mongo
     };
   }
 

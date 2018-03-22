@@ -62,16 +62,12 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-<<<<<<< HEAD
     "jest-cli": "^23.0.0-alpha.0",
     "mongoose": "^5.0.11",
     "reactstrap": "^4.8.0"
   },
   "optionalDependencies": {
-    "fsevents": "*"
-=======
-    "express": "^4.16.3",
-    "jest-cli": "^23.0.0-alpha.0"
->>>>>>> 2a4aba6d5457d88e66f0760537ee27b864795497
+    "fsevents": "*",
+    "express": "^4.16.3"
   }
 }

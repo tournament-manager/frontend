@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AuthForm from '../auth/auth-form/auth-form';
-import {signupRequest, signinRequest} from '../../action/auth-action';
+import AuthForm from '../admin/auth-form/auth-form';
+import {signupRequest, signinRequest} from '../../actions/signin-signup-actions';
 import TournamentView from '../tournament-view/tournament-view';
 
 
@@ -32,7 +32,7 @@ class Landing extends React.Component {
           redirect={this.redirect}
           onComplete={onComplete}
         />
-        <TournamentView /> {/* render tournament view here */}
+        <TournamentView />
       </div>
     );
   }
@@ -45,7 +45,7 @@ let mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
-
+//export default Landing;
 //source: fetch one on click https://stackoverflow.com/questions/46586656/reactjs-display-fetch-response-onclick
 
 //display divisions whifh are the age goroups
