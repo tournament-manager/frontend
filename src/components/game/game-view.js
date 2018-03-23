@@ -1,26 +1,28 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-export default class GameView extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     game: [],
+class GameView extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      game: [],
 
-  //   };
-  //   this.onClick = this.onClick.bind(this);
-  // }
-  // gameClick(){
-  //   this.props.history.push('/divisions');
-  // }
+    };
+    this.gameClick = this.gameClick.bind(this);
+  }
+  gameClick(e){
+    e.preventDefault();
+    //this.props.history.push('/divisions');
+  }
 
   render() {
     return (
       <div>
-        <h3>{this.props.game}</h3>
+        <h1>Games</h1>
         <ul>
           {this.props.game.length ?
             this.props.game.map((game, i) =>
-              <li key={i} onClick={this.gameClick}>{game}</li>
+              <li className="game-view" key={i} onClick={this.gameClick}>{game}<br /></li>
             )
             : undefined}
         </ul>
@@ -29,6 +31,8 @@ export default class GameView extends React.Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//   game: state.game,
-// });
+const mapStateToProps = state => ({
+  game: state.game,
+});
+
+export default connect(mapStateToProps, null)(GameView)

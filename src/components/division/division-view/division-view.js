@@ -1,32 +1,30 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
+import {Link} from 'react-router-dom';
 
 class DivisionView extends React.Component {
   constructor() {
     super();
     this.state = {
-      division: [{
-        name: 'soccerStadium',
-        tournament: '5ab47d7246f303090ce9b905',
-
-      }],
-
+      division: [],
+      game: [],
     };
+
     this.divisionClick = this.divisionClick.bind(this);
   }
-  divisionClick(){
-    this.props.history.push('/divisions');
+  divisionClick(e){
+    e.preventDefault();
+    //this.props.history.push('/divisions');
   }
 
   render() {
     return (
       <div>
-        <h3>{this.props.division}</h3>
+        <h3>Divisions</h3>
         <ul>
           {
             this.props.division.map((division, i) =>
-              <li key={i} onClick={this.divisionClick}>{division}</li>
+              <Link to="/games" key={i}><br /><li id={division._id} className="division-view" onClick={this.divisionClick}>{division._id}</li></Link>
             )
           }
         </ul>

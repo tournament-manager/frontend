@@ -36,7 +36,7 @@ class TournamentView extends React.Component {
         <ul>
           {this.state.tournaments2.length ?
             this.state.tournaments2.map((tournaments2, i) =>
-              <Link to="/division" key={i}><br /><li id={tournaments2._id} className="tournament-view" onClick={this.tournamentClick}>{tournaments2.name}</li></Link>
+              <Link to="/divisions" key={i}><br /><li id={tournaments2._id} className="tournament-view" onClick={this.tournamentClick}>{tournaments2.name}</li></Link>
             )
             : undefined}
         </ul>
