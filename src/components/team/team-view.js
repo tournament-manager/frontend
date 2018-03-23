@@ -16,7 +16,7 @@ export default class TeamView extends React.Component {
 
   render() {
     return (
-      <ul>
+      <ul className="team-view-list">
         {this.props.team ?
           <li>
             <h6>{this.props.team.name}</h6>

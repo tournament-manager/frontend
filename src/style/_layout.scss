@@ -9,7 +9,7 @@
 
 .app-nav-item {
   a {
-   color: $secondary-text-color;
+   color: #bbb;
   }
 }
 
@@ -25,7 +25,7 @@ h1 {
   color: $primary-text-color;
   margin: .25em auto;
   text-align: center;
-  padding-top: .25em;
+  padding-top: .5em;
 }
 
 section {
@@ -39,7 +39,7 @@ section {
 
   .admin-view-division-container, .admin-tournament-view-container {
     padding: 1.25em;
-    background-color: rgba(255, 255,255, 0.3);
+    background-color: rgba(240, 240, 240, 0.3);
     border-radius: .25em;
   }
 
@@ -121,7 +121,7 @@ section {
 
 .admin-view-container {
   padding: 1.25em;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(240, 240, 240, 0.3);
   border-radius: .25em;
 
   h3 {
@@ -149,4 +149,29 @@ section {
   }
 
 
+}
+
+
+.tournament-view-container{
+  width: 94%;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin-top: 2em;
+  padding: 1em;
+  border-radius: .25em;
+
+  h2 {
+    color: #dedede;
+    }
+}
+
+
+.tournament-view-list{
+  background-color: rgba(240, 240, 240, .1);
+  padding: 1em;
+  margin: .5em;
+  line-height: 1.5em;
+  border-radius: .25em;
+
+  
 }

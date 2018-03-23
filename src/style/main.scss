@@ -18,9 +18,9 @@ body {
 
 .landing-container {
   width: 95%;
-  margin: 1em auto;
-  padding: 1.5em 0;
-  background: rgba(255,255,255,.2);
+  margin: 2em auto;
+  padding: 2em 0;
+  background: rgba(240,240,240, .3);
   border-radius: .25em;
   position: relative;
 
@@ -38,8 +38,10 @@ h1 {
 
 h3 {
   color: $secondary-color;
+  color: #bddfe2;
   font-size: 1.5em;
   text-align: center;
+  text-shadow: #000 0.1em 0.1em 0.4em;
 }
 
 .auth-form-btn-wrap{
@@ -69,17 +71,28 @@ button {
     margin-left: 40%;
 }
 
-// .container {
-//   display: block;
-//   margin-bottom: 20px;
-//  }
-
-//  .input {
-//    margin-right: 20px;
-//  }
-
  .error {
    border: 3px solid red;
    margin-right: 20px;
  }
+
+
+}
+
+.tournament-view-link {
+  text-align: center;
+  margin-top: 6em;
+  span {
+    display: inline-block;
+    padding: 2em;
+    background-color: rgba(210, 210, 200, 0.2);
+    border: 1px solid #ccc;
+    border-radius: .3em;
+
+    a {
+      text-decoration: none;
+      color: #f4f5e4;
+      font-size: 1.5em;
+     }
+  }
 }

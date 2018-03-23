@@ -16,7 +16,7 @@ export default class GameView extends React.Component {
 
   render() {
     return (
-      <ul>
+      <ul className="game-view-list">
         {this.props.games.length ?
           this.props.games.map((game, i)  =>
             <li className="game-view" 

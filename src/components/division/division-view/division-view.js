@@ -17,7 +17,7 @@ class DivisionView extends React.Component {
 
   render(){
     return (
-      <ul>
+      <ul className="division-view-list">
         {this.props.divisions.length ? 
           this.props.divisions.map(division => 
             <li key={division._id}>

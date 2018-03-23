@@ -2,4 +2,11 @@
 
 body {
   background-color: $primary-background-color;
+  background: url(/image/night-soccer.jpg), #c5a14e;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-blend-mode: darken, overlay;
+  background-attachment: fixed;
+  background-size: cover;
 }
+

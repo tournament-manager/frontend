@@ -35,7 +35,9 @@ class Landing extends React.Component {
               :undefined}
           </div>
           : undefined}
-       
+        <div className="tournament-view-link">
+          <span><Link to="/tournaments">Tournament View</Link></span>
+        </div>
       </div>
     );
   }

@@ -69,8 +69,8 @@ export default class AuthForm extends React.Component {
           : 
           <input
             type='text'
-            name="Username"
-            placeholder="username"
+            name="username"
+            placeholder="Username"
             value={this.state.username}
             onChange={this.handleChange}/>
         }

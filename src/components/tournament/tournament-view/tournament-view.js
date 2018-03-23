@@ -17,9 +17,9 @@ class TournamentView extends React.Component {
 
   render() {
     return (
-      <div>
+      <section className="tournament-view-container">
         <h2>Tournaments</h2>
-        <ul>
+        <ul className="tournament-view-list">
           {this.props.tournaments.length ?
             this.props.tournaments.map(tournament => (
               <li key={tournament._id}  
@@ -34,7 +34,7 @@ class TournamentView extends React.Component {
             ))
             : undefined}
         </ul>
-      </div>
+      </section>
     );
   }
 }
