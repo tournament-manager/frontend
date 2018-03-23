@@ -60,3 +60,22 @@ button {
    border: 3px solid red;
    margin-right: 20px;
  }
+
+ .tourney-link {
+   margin-left: 32%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.tournament-view{
+  color: $primary-color;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 15px;
+  padding: 4px;
+  border-style: solid;
+  border-width: 3px;
+  border-spacing: 10px;
+
+}

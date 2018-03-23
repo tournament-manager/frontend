@@ -1,15 +1,15 @@
-// import React from 'react';
-// import DivisionView from '../division/division-view/division-view';
-// // import {connect} from 'react-redux'; //might be wrong source
+import React from 'react';
+import DivisionView from '../division/division-view/division-view';
+ import {connect} from 'react-redux'; //might be wrong source
 
-// class TournamentView extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       tournament: [],
-//       division: [],
-//     };
-//   }
+class TournamentView extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      tournament: [],
+      division: [],
+    };
+  }
 
 //   componentDidMount() {
 //     let initialTournament = [];
@@ -27,23 +27,23 @@
 //       });
 //   }
 
-//   render() {
-//     return (
-//       <div>
-//         <h3>{this.props.tournament.name}</h3>
-//         <ul>
-//           {this.props.divisions.length ?
-//             this.props.divisions.map((division, i) =>
-//               <li onClick={() => this.props.history.push('/divisions')}>
-//                 <DivisionView key={i} division={division} />
-//               </li>
-//             )
-//             : undefined}
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
+  render() {
+    return (
+      <div>
+        <h3>{this.props.tournament.name}</h3>
+        <ul>
+          {this.props.tournament.length ?
+            this.props.tournament.map((division, i) =>
+              <li onClick={() => this.props.history.push('/divisions')}>
+                <DivisionView key={i} division={division} />
+              </li>
+            )
+            : undefined}
+        </ul>
+      </div>
+    );
+  }
+}
 
 /* <div>
   <h3>{this.props.tournament.name}</h3>
@@ -64,7 +64,7 @@
 // });
 
 // export default connect(mapStateToProps, null)(TournamentView);
-//export default TournamentView;
+export default TournamentView;
 
 
 //source Fetch All https://stackoverflow.com/questions/45001916/how-to-get-and-display-all-child-list-from-firebase-react

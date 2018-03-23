@@ -68,11 +68,10 @@ export default class App extends React.Component{
         <Provider store={store}>
           <React.Fragment>
             <Navbar token={token} store={store} />
-            <h1>Tournament!</h1>
             <Route exact path="/admin" component={AdminView} />
             <Route exact path="/welcome/:auth" component={Landing} />
             <Route exact path="/tournaments" render={props => {
-              return <TournamentView {...props} />
+              return <TournamentView {...props}/>;
             }} />
             <Route exact path="/divisions" component={DivisionView} />
             <Route exact path="/games" component={GameView} />

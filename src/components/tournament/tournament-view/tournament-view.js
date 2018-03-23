@@ -1,42 +1,42 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-//import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'; //so cool!
-// import Division from '../../../../backend/model/tournament-model';
 
-export default class TournamentView extends React.Component {
+
+class TournamentView extends React.Component {
   constructor() {
     super();
     this.state = {
-      tournament: [],
+      tournaments: [],
+      tournaments2: [{
+        _id: '5ab47d7246f303090ce9b905',
+        name: 'tournament A',
+        director: 'asdfasdfasdf456789',
+        dateStart: new Date(),
+        dateEnd: new Date(),
+      }, {
+        _id: '5ab47d7246f303090ce9b904',
+        name: 'tournament B',
+        director: 'Bill',
+        dateStart: new Date(),
+        dateEnd: new Date(),
+      }],
     };
+    this.tournamentClick = this.tournamentClick.bind(this);
   }
-
-  // componentDidMount() {
-  //   let initialTournament = [];
-  //   fetch(`${__API_URL__}/tournament`) //plug in store actions
-  //     .then(response => {
-  //       return response.json();
-  //     }).then(data => {
-  //       initialTournament = data.results.map((tournaments) => {
-  //         return tournaments;
-  //       });
-  //       console.log(initialTournament);
-  //       this.setState({
-  //         tournament: initialTournament,
-  //       });
-  //     });
-  // }
+  tournamentClick(e){
+    e.preventDefault();
+    // this.props.history.push('/divisions');
+  }
 
   render() {
     return (
       <div>
-        <h3>{this.props.tournament}</h3>
+        <h1>Tournaments</h1>
         <ul>
-          {this.props.divisions.length ?
-            this.props.divisions.map((division, i) =>
-              <li onClick={() => this.props.history.push('/divisions')}>
-                <DivisionView key={i} division={division} />
-              </li>
+          {this.state.tournaments2.length ?
+            this.state.tournaments2.map((tournaments2, i) =>
+              <Link to="/division" key={i}><br /><li id={tournaments2._id} className="tournament-view" onClick={this.tournamentClick}>{tournaments2.name}</li></Link>
             )
             : undefined}
         </ul>
@@ -44,3 +44,11 @@ export default class TournamentView extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  tournaments: state.tournaments,
+  division: state.division,
+  game: state.game,
+});
+
+export default connect(mapStateToProps, null)(TournamentView);
