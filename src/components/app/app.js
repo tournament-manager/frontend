@@ -48,7 +48,6 @@ export default class App extends React.Component{
     return (
       <Provider store={store}>
         <React.Fragment>
-          {/* {store.getState().token ? <AppNav/> : undefined} */}
           <AppNav/>
           <main>
             <h1>Tournament!</h1>

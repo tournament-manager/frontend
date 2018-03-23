@@ -11,8 +11,12 @@ export default class AppNav extends React.Component{
     return (
       <ul className="app-nav-list">
         <li className="app-nav-item"><Link to="/welcome/signin">Home</Link></li>
-        <li className="app-nav-item"><Link to="/admin">Admin</Link></li>
-        <li className="app-nav-item" onClick={this.onLogOut}><Link to="/welcome/signin">Logout</Link></li>
+        {localStorage.token ?
+          <li className="app-nav-item"><Link to="/admin">Admin</Link></li>
+          :undefined}
+        {localStorage.token ?
+          <li className="app-nav-item" onClick={this.onLogOut}><Link to="/welcome/signin">Logout</Link></li>
+          :undefined}
       </ul>
     );
   }
