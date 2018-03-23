@@ -1,3 +1,3 @@
 import DivisionForm from './division-form/division-form';
-
-export {DivisionForm};
+import DivisionView from './division-view/division-view';
+export {DivisionForm, DivisionView};
