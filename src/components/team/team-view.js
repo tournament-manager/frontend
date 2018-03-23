@@ -4,7 +4,7 @@ export default class TeamView extends React.Component {
   constructor() {
     super();
     this.state = {
-      isVisible: false,
+      isVisible: true,
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -15,8 +15,8 @@ export default class TeamView extends React.Component {
   render() {
     return (
       <ul className="team-view-list">
-        {this.state.isVisible ? 
-          this.props.team ?
+        {this.props.team ?
+          this.state.isVisible ? 
             <li>
               <h6>{this.props.team}</h6>
             </li>
