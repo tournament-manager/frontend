@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-
 class TournamentView extends React.Component {
   constructor() {
     super();
@@ -36,7 +35,7 @@ class TournamentView extends React.Component {
         <ul>
           {this.state.tournaments2.length ?
             this.state.tournaments2.map((tournaments2, i) =>
-              <Link to="/divisions" key={i}><br /><li id={tournaments2._id} className="tournament-view" onClick={this.tournamentClick}>{tournaments2.name}</li></Link>
+              <Link to="/divisions" key={i}><br /><li id={tournaments2._id} className="tournament-view" onClick={this.tournamentClick}><Link to="/divisions">{tournaments2.name}</Link></li></Link>
             )
             : undefined}
         </ul>
