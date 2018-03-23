@@ -1,38 +1,34 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import TeamView from '../team/team-view';
 
-class GameView extends React.Component {
-  constructor() {
-    super();
+export default class GameView extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      game: [],
-
+      isVisible: true,
     };
-    this.gameClick = this.gameClick.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
-  gameClick(e){
-    e.preventDefault();
-    //this.props.history.push('/divisions');
+
+  toggle(){
+    this.setState({isVisible: !this.state.isVisible});
   }
 
   render() {
     return (
-      <div>
-        <h1>Games</h1>
-        <ul>
-          {this.props.game.length ?
-            this.props.game.map((game, i) =>
-              <li className="game-view" key={i} onClick={this.gameClick}>{game}<br /></li>
-            )
-            : undefined}
-        </ul>
-      </div>
+      <ul>
+        {this.props.games.length ?
+          this.props.games.map((game, i)  =>
+            <li className="game-view" 
+              key={`${game.id}${i}`} 
+              onClick={this.toggle}>
+              <h5 key={game.id} >{game.name}</h5>
+              <TeamView key={game.teamA_id} team={game.teamA}/>
+              <TeamView key={game.teamB_id} team={game.TeamB}/>
+            </li>
+          )
+          : undefined}
+      </ul>
     );
   }
 }
-
-const mapStateToProps = state => ({
-  game: state.game,
-});
-
-export default connect(mapStateToProps, null)(GameView);

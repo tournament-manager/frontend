@@ -1,46 +1,42 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import GameView from '../../game/game-view';
 
 class DivisionView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      division: [],
-      game: [],
+      isVisible: true,
     };
 
-    this.divisionClick = this.divisionClick.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
-  divisionClick(e){
-    e.preventDefault();
-    //this.props.history.push('/divisions');
+  toggle(){
+    this.setState({isVisible: !this.state.isVisible});
   }
 
-  render() {
+  render(){
     return (
-      <div>
-        <h3>Divisions</h3>
-        <ul>
-          {
-            this.props.division.map((division, i) =>
-              <Link to="/games" key={i}><br /><li id={division._id} className="division-view" onClick={this.divisionClick}>{division._id}</li></Link>
-            )
-          }
-        </ul>
-      </div>
+      <ul>
+        {this.props.divisions.length ? 
+          this.props.divisions.map(division => 
+            <li key={division._id}>
+              <h4 onClick={this.toggle}>{division.name}</h4>
+              { this.state.isVisible ?
+                this.props.games[division._id] ?
+                  <GameView games={this.props.games[division._id]}/> 
+                  :undefined
+                :undefined}
+            </li>
+          )
+          : undefined}
+      </ul>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  division: state.division,
-  game: state.game,
+  games: state.games,
 });
 
 export default connect(mapStateToProps, null)(DivisionView);
-
-
-//setstate is visible
-//onClick
-//renderif on what we want to hide

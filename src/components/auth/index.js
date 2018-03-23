@@ -9,6 +9,7 @@ export default class AuthForm extends React.Component {
       fullname: '',
       email: '',
       password: '',
+      username: '',
       notification: true,
       fullnameError: null,
       emailError: null,
@@ -32,11 +33,9 @@ export default class AuthForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let { fullname, email, password, notification } = this.state;
-    //console.log(this.state.fullname, this.state.email, this.state.password);
-    this.props.onComplete({ fullname, email, password, notification })
+    let { fullname, email, password, notification, username } = this.state;
+    this.props.onComplete({ fullname, email, password, notification, username })
       .then(() => this.setState({ fullname: '', email: '', password: '' }))
-      //.then(() => this.props.history.push('/dashboard'))
       .catch(error => this.setState({error}));
   }
 
@@ -48,22 +47,33 @@ export default class AuthForm extends React.Component {
         onSubmit={this.handleSubmit}
         noValidate>
 
-        <input
-          type="text"
-          name="fullname"
-          placeholder="Enter fullname"
-          pattern=""
-          value={this.state.fullname}
-          onChange={this.handleChange}/>
-        {renderIf(this.state.fullnameError, <span className="tooltip">{this.state.fullnameError}</span>)}
+        { this.props.auth === 'signup' ?
+          <React.Fragment>
+            <input
+              type="text"
+              name="fullname"
+              placeholder="Enter fullname"
+              pattern=""
+              value={this.state.fullname}
+              onChange={this.handleChange}/>
+     
+            {renderIf(this.state.fullnameError, <span className="tooltip">{this.state.fullnameError}</span>)}
 
-        <input
-          type="email"
-          name="email"
-          placeholder="user@email.com"
-          value={this.state.email}
-          onChange={this.handleChange}/>
-
+            <input
+              type="email"
+              name="email"
+              placeholder="user@email.com"
+              value={this.state.email}
+              onChange={this.handleChange}/>
+          </React.Fragment>
+          : 
+          <input
+            type='text'
+            name="Username"
+            placeholder="username"
+            value={this.state.username}
+            onChange={this.handleChange}/>
+        }
 
         <input
           type="password"
@@ -72,7 +82,9 @@ export default class AuthForm extends React.Component {
           value={this.state.password}
           onChange={this.handleChange}/>
 
-        <button type="submit">{this.props.auth}Submit</button>
+        <div className="auth-form-btn-wrap">
+          <button type="submit">{this.props.auth === 'signin' ? 'sign in' : 'sign up'}</button>
+        </div>
       </form>
     );
   }

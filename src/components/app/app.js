@@ -1,7 +1,7 @@
 import React from 'react';
 import store from '../../lib/store';
 import {Provider} from 'react-redux';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import Landing from '../landing/landing';
 import {AdminView} from '../admin';
 import {setStateFromStorage} from '../../actions/tournament-actions';
@@ -13,6 +13,10 @@ import {gameAllGetRequest} from '../../actions/game-actions';
 import {adminTournamentsGetRequest} from '../../actions/admin-tournaments-actions';
 import {setToken} from '../../actions/signin-signup-actions';
 import {AppNav} from './';
+import TournamentView from '../tournament/tournament-view/tournament-view';
+import DivisionView from '../division/division-view/division-view';
+import GameView from '../game/game-view';
+
 
 store.subscribe(() => {
   saveToLocalStorage(store.getState());
@@ -47,8 +51,16 @@ export default class App extends React.Component{
           {store.getState().token ? <AppNav/> : undefined}
           <main>
             <h1>Tournament!</h1>
-            <Route exact path="/" component={Landing}/>
-            <Route exact path="/admin" component={AdminView}/>
+            <Route exact path="/" render={() => (
+              <Redirect to="/welcome/signin"/>
+            )}/>
+            <Route exact path="/admin" component={AdminView} />
+            <Route exact path="/welcome/:auth" component={Landing} />
+            <Route exact path="/tournaments" render={props => {
+              return <TournamentView {...props}/>;
+            }} />
+            <Route exact path="/divisions" component={DivisionView} />
+            <Route exact path="/games" component={GameView} />
           </main>
         </React.Fragment>
       </Provider>

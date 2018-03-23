@@ -3,8 +3,8 @@
 @import 'base';
 @import 'layout';
 
-$primary-color: #5D9731;
-$secondary-color: #3a65aa;
+$primary-color: #058210;
+$secondary-color: #333;
 
 * {
   box-sizing: border-box;
@@ -17,10 +17,16 @@ body {
 }
 
 .landing-container {
+  width: 95%;
+  margin: 1em auto;
+  padding: 1.5em 0;
+  background: rgba(255,255,255,.2);
+  border-radius: .25em;
+  position: relative;
 
 input {
   width: 80%;
-  margin: 0 auto;
+  margin: .75em auto;
   display: block;
 }
 
@@ -36,6 +42,21 @@ h3 {
   text-align: center;
 }
 
+.auth-form-btn-wrap{
+  text-align: right;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.signup-link {
+  color: #ccc;
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: -1.5em;
+  left: .75em;
+}
+
 button {
     background-color: $primary-color; /* Green */
     border: none;
@@ -48,14 +69,14 @@ button {
     margin-left: 40%;
 }
 
-.container {
-  display: block;
-  margin-bottom: 20px;
- }
+// .container {
+//   display: block;
+//   margin-bottom: 20px;
+//  }
 
- .input {
-   margin-right: 20px;
- }
+//  .input {
+//    margin-right: 20px;
+//  }
 
  .error {
    border: 3px solid red;
