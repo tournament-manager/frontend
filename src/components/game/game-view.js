@@ -18,15 +18,14 @@ export default class GameView extends React.Component {
     return (
       <ul className="game-view-list">
         {this.props.games.length ?
-          this.props.games.map((game, i)  =>
+          this.props.games.map((game, i)  => (
             <li className="game-view" 
-              key={`${game.id}${i}`} 
-              onClick={this.toggle}>
-              <h5 key={game.id} >{game.name}</h5>
-              <TeamView key={game.teamA_id} team={game.teamA}/>
-              <TeamView key={game.teamB_id} team={game.TeamB}/>
+              key={`${game._id}${i}`}>
+              <h5 key={game._id} onClick={this.toggle}>{game.gamenumber}</h5>
+              <TeamView key={game.teamA} team={game.teamA}/>
+              <TeamView key={game.teamB} team={game.teamB}/>
             </li>
-          )
+          ))
           : undefined}
       </ul>
     );

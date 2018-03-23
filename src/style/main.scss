@@ -79,20 +79,23 @@ button {
 
 }
 
+
+
 .tournament-view-link {
   text-align: center;
   margin-top: 6em;
+
+  a {
+    text-decoration: none;
+    color: #f4f5e4;
+    font-size: 1.5em;
+   }
+
   span {
     display: inline-block;
-    padding: 2em;
+    padding: 1.5em;
     background-color: rgba(210, 210, 200, 0.2);
     border: 1px solid #ccc;
     border-radius: .3em;
-
-    a {
-      text-decoration: none;
-      color: #f4f5e4;
-      font-size: 1.5em;
-     }
   }
 }

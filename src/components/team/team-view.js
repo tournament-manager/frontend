@@ -4,31 +4,25 @@ export default class TeamView extends React.Component {
   constructor() {
     super();
     this.state = {
-      game: [],
-
+      isVisible: false,
     };
     this.toggle = this.toggle.bind(this);
   }
-  toggle(e){
-    e.preventDefault();
-    //this.props.history.push('/divisions');
+  toggle(){
+    this.setState({isVisible: !this.state.isVisible});
   }
 
   render() {
     return (
       <ul className="team-view-list">
-        {this.props.team ?
-          <li>
-            <h6>{this.props.team.name}</h6>
-          </li>
-          : undefined}
+        {this.state.isVisible ? 
+          this.props.team ?
+            <li>
+              <h6>{this.props.team}</h6>
+            </li>
+            : undefined
+          :undefined}
       </ul>
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   teams: state.teams,
-// });
-
-// export default connect(mapStateToProps, null)(GameView);

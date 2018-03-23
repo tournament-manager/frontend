@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import GameView from '../../game/game-view';
 
 class DivisionView extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
-      isVisible: true,
+      isVisible: false,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -19,7 +19,7 @@ class DivisionView extends React.Component {
     return (
       <ul className="division-view-list">
         {this.props.divisions.length ? 
-          this.props.divisions.map(division => 
+          this.props.divisions.map(division => (
             <li key={division._id}>
               <h4 onClick={this.toggle}>{division.name}</h4>
               { this.state.isVisible ?
@@ -28,7 +28,7 @@ class DivisionView extends React.Component {
                   :undefined
                 :undefined}
             </li>
-          )
+          ))
           : undefined}
       </ul>
     );

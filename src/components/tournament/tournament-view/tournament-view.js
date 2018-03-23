@@ -10,8 +10,7 @@ class TournamentView extends React.Component {
     };
     this.toggle = this.toggle.bind(this);
   }
-  toggle(e){
-    e.preventDefault();
+  toggle(){
     this.setState({isVisible: !this.state.isVisible});
   }
 
