@@ -42,7 +42,7 @@ export default class TeamSelect extends React.Component{
         <div className='team-value'
           onClick={this.toggleVisible}>
           {this.state.teamName || <span className="team-select-placeholder" >select a team</span>}</div>
-        <ul className={`team-list${this.state.isVisible ? 'visible' : ''}`}>
+        <ul className={`team-list${this.state.isVisible ? ' visible' : ''}`}>
           {this.props.teams.length ? this.props.teams.map(team => 
             <TeamItem key={`${team._id}`} toggle={this.handleChange}
               team={team} />

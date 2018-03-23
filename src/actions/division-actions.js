@@ -18,6 +18,15 @@ const divisionCreateRequest = division => dispatch => {
     .then(res =>  dispatch(divisionSet(res.body)));
 };
 
+const divisionPopulateRequest = (teams, division_id) => dispatch => {
+  let token = localStorage.token;
+  console.log('teams', teams);
+  return superagent.post(`${__API_URL__}/division/populate/${division_id}`)
+    .set({'Authorization': `Bearer ${token}`})
+    .send(teams)
+    .then(res => res.status);
+};
+
 const divisionGetRequest = divisionId => dispatch => {
   return superagent.get(`${__API_URL__}/division/${divisionId}`)
     .then(res =>  dispatch(divisionSet(res.body)));
@@ -44,4 +53,4 @@ const divisionDeleteRequest = division => dispatch => {
 };
 
 
-export {divisionCreateRequest, divisionGetRequest, divisionAllGetRequest, divisionUpdateRequest, divisionDeleteRequest}; 
+export {divisionCreateRequest, divisionGetRequest, divisionAllGetRequest, divisionUpdateRequest, divisionDeleteRequest, divisionPopulateRequest}; 

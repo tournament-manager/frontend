@@ -7,14 +7,16 @@ export default class AdminViewDivisions extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      divisions: this.props.divisions || '',
+      divisions: this.props.divisions || [],
+      teams: this.props.teams || '',
+      games: this.props.games || [],
     };
     this.addDivision = this.addDivision.bind(this);
     this.removeDivision = this.removeDivision.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({divisions: nextProps.divisions});
+    this.setState({divisions: nextProps.divisions, teams: nextProps.teams, games: this.props.games});
   }
 
   addDivision(){
@@ -41,7 +43,11 @@ export default class AdminViewDivisions extends React.Component{
                 } 
                 onDelete={this.props.submitHandlers.divisionDeleteRequest}
                 removeDivision={this.removeDivision}/>
-              <GroupTeamAssignment groupSlots={''}/>
+              <GroupTeamAssignment groupSlots={''}
+                teamAssign={this.props.teamAssign}
+                division={division}
+                games={this.state.games[division._id] || []}
+                teams={this.props.teams}/>
             </li> 
           ) 
           )

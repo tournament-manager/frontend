@@ -9,6 +9,7 @@ import {saveToLocalStorage} from '../../lib/local-storage';
 import {tournamentAllGetRequest} from '../../actions/tournament-actions';
 import {divisionAllGetRequest} from '../../actions/division-actions';
 import {teamAllGetRequest} from '../../actions/team-actions';
+import {gameAllGetRequest} from '../../actions/game-actions';
 import {adminTournamentsGetRequest} from '../../actions/admin-tournaments-actions';
 import {setToken} from '../../actions/signin-signup-actions';
 import {AppNav} from './';
@@ -27,6 +28,7 @@ export default class App extends React.Component{
       store.dispatch(tournamentAllGetRequest()),
       store.dispatch(divisionAllGetRequest()),
       store.dispatch(teamAllGetRequest()),
+      store.dispatch(gameAllGetRequest()),
     ])
       .then(() => {
         if(store.getState().token) return store.dispatch(adminTournamentsGetRequest());
