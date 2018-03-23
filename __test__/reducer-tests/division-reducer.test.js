@@ -1,4 +1,4 @@
-import divisionsReducer from '../reducers/divisions-reducer';
+import divisionsReducer from '../../src/reducers/divisions-reducer';
 
 describe('Divisions Reducer Test', function(){
  

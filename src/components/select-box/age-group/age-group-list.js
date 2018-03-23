@@ -23,7 +23,7 @@ export default class AgeGroupList extends React.Component{
   handleChange(textValue){
     this.toggleVisible();
     this.setState({age: textValue});
-    this.props.onSelect({target:{name: 'ageGroup', value: textValue}});
+    this.props.onSelect({target:{name: 'agegroup', value: textValue}});
   }
 
   render(){
@@ -31,8 +31,8 @@ export default class AgeGroupList extends React.Component{
       <div className="age-group-list-wrap">
         <div className='age-group-value'
           onClick={this.toggleVisible}>
-          {this.state.age || '--'}</div>
-        <ul className={`age-group-list${this.state.isVisible ? 'visible' : ''}`}>
+          {this.state.age || <span className="age-group-select-placeholder" >select age group</span>}</div>
+        <ul className={`age-group-list${this.state.isVisible ? ' visible' : ''}`}>
           {ageGroups.map((age, i) => 
             <AgeGroupItem key={`${i}_${age}`} toggle={this.handleChange}
               textValue={age} />

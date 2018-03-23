@@ -1,46 +1,20 @@
-Tournament Manger
-User Stories
-As an admininstrator, before the tournament starts, I want to be able to create a tournament flight - a set of games for a given age and class (gender and/or skill level). I also want to be able to create multiple flights to make a tournament.
+## Tournament Manger Front End
 
-As an admininstrator, I want to have a logo for my tournament and be able to specify my color scheme.
+This tournament app is used to set up soccer tournaments. Each tournament is composed of a set of games, delineated by birth year and any other classification (gender, skill level), referred to here as divisions.
 
-As an administrator before the tournament starts, I want to be able to assign 16 teams to each flight with 4 teams to a bracket, resulting in in 24 group stage matches, 4 quarter-final matches, 2 semi-final matches and 1 championship match, for a total of 31 matches per flight. I need to be able to assign to each match:
+The set-up for each division of a tournament has 16 teams, each competing as 4 groups of 4, playing against each team in their group.
 
-a unique game id
-a flight / bracket id
-a home team
-an away team
-a field
-a referee
-a start-time
-a date
-a field for results.
-As an adminstrator, before the tournament I want to able to enter a team, which is composed:
+In this stage, points are awards to each game with the following rules: 6 points for a win, 1 point for a tie, 1 point for each goal scored up to 3, and 1 point for a clean-sheet (no goals allowed). The maximum points in a game in group play is 10.
+From the groups, the two teams with the highest points move on to the play-offs. The play-offs consist of single elimination games at the quarter-final, semi-final and final level.
+Once complete, each division will have completed 31 games.
 
-a team name
-a coach
-a notification number for updates
-a birth year
--a classn(gender / skill level
-an array of games.
-As a referee, before a game, I want to be able to log-in and enter my referee number to see information for my scheduled games. Once logged in, I would like to be updated about schedule changes involve games I'm assigned to.
+## Application structure
+The front-end of the application uses React.JS and a Redux store to handle state.  Webpack is used to transpile the code.  Testing is carried out using Jest.  All the additional dependencies are listed in the package.json file.
 
-As a referee, after a match is complete, I want to be able to enter the score and the infractions (yellow and red cards).
+The project is deployed on Heroku at https://tournament-front-end.herokuapp.com/.
 
-As an administrator, during the tournament, I want to be able to enter the score of each match.
 
-As an administrator, during the tournament, I want to assign teams to the quarter finals, semi-finals and championship matches.
+## User Stories
+As an admininstrator, before the tournament starts, I want to be able to create a tournament divison - a set of games for a given age and class (gender and/or skill level). I also want to be able to create multiple flights to make a tournament.
 
-As an administrator, during the tournament, I want to be able to make schedule changes if necessary. Examples include field changes, referee changes, time changes.
-
-As an adminstrator, during the tournament, I want to easily send updates to the team's main notification numbers and the referees if a schedule change effects them.
-
-As the team contact, I would like updates sent to me. At a minimum, I would like schedule updates effecting the teams I am following. Additional updates might include results of other teams playing in my bracket during the group stage and notifications which teams I will face in the quarter, semi and championship matches.
-
-As a user, I want to log in and easily select the teams I want to follow. I want to be remembered when I visit the site for the whole tournament so that the first information I see will be able the teams I am following.
-
-As a user, I want the option to see all the matches while signed up
-
-As a user, it would be a nice to have option to received real-time updates about the teams I'm following.
-
-As a guest I wanted to be able to go to the website and look at all the games. I want to easily be able to search by gender and age to find information about my team of interest.
+As a user, I want to easily view the available tournaments, the divisions within the selected tournament and the game within the selected division.

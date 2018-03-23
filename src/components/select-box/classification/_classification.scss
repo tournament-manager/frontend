@@ -1,9 +1,26 @@
+.classification-list-wrap {
+  width: 50%;
+  box-sizing: border-box;
+  line-height: 2.5em;
+  text-indent: .5em;
+  background-color: #eee;
+  border-radius: .25em;
+  margin-bottom: 1em;
+  position: relative;
+}
+
 
 .classification-value {
   cursor: pointer;
+  font-size: 1.25em;
+  border-radius: .2em;
+  background-color: #fff;
 }
 
 .classification-list{
+  z-index: 9;
+  position: absolute;
+  width: 100%;
   cursor: pointer;
   max-height: 0;
   overflow: hidden;
@@ -11,11 +28,20 @@
 }
 
 .classification-list.visible{
-  max-height: 3em;
+  max-height: 30vh;
   overflow: auto;
   transition: 350ms;
 }
 
 .classification-item {
   cursor: pointer;
+  background-color: #fff;
+}
+
+.classification-item:nth-of-type(odd) {
+  background-color: #eee;
+}
+
+.classification-select-placeholder {
+  color: #ccc;
 }

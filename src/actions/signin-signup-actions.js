@@ -1,4 +1,5 @@
 import superagent from 'superagent';
+import {adminTournamentsGetRequest} from './admin-tournaments-actions';
 
 const setToken = token => ({
   type: 'TOKEN_SET',
@@ -6,9 +7,11 @@ const setToken = token => ({
 });
 
 const userSigninRequest = user => dispatch => {
+  console.log(user.username, user.password);
   return  superagent.get(`${__API_URL__}/signin`)
     .auth(user.username, user.password)
-    .then(res => dispatch(setToken(res.body)));
+    .then(res => dispatch(setToken(res.body)))
+    .then(() => dispatch(adminTournamentsGetRequest()));
 }; 
 
 const userSignupRequest = user => dispatch => {
@@ -16,5 +19,6 @@ const userSignupRequest = user => dispatch => {
     .send(user)
     .then(res => dispatch(setToken(res.body)));
 };
+
 
 export {setToken, userSigninRequest, userSignupRequest};
