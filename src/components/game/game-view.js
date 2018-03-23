@@ -1,7 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-export default class GameView extends React.Component {
+class GameView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,10 +34,24 @@ export default class GameView extends React.Component {
     return (
       <div>
         <h1>Here are all the games in your division</h1>
-        <h4>{/*<TournamentView state={this.state} />*/}</h4>
-
+        <ul>
+          <li>
+            <h3>Game: {this.props.game.number}</h3>
+            <h5>Home Team: {this.props.teamA}</h5>
+            <h5>Away Team: {this.props.teamB}</h5>
+            <h5>Field: {this.props.field}</h5>
+            <h5>Start Time: {this.props.startTime}</h5>
+          </li>
+        </ul>
         <Link to ="./">Home</Link>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  gamenumber: state.division,
+  game: state.game,
+});
+
+export default connect(mapStateToProps, null)(GameView);

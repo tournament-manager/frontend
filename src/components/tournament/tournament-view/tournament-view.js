@@ -30,11 +30,16 @@ export default class TournamentView extends React.Component {
   render() {
     return (
       <div>
-        <h1>Here are all the tournaments</h1>
-        <h4>{/*<TournamentView state={this.state} />*/}</h4>
-
-
-        <Link to ="./">Home</Link>
+        <h3>{this.props.tournament}</h3>
+        <ul>
+          {this.props.divisions.length ?
+            this.props.divisions.map((division, i) =>
+              <li onClick={() => this.props.history.push('/divisions')}>
+                <DivisionView key={i} division={division} />
+              </li>
+            )
+            : undefined}
+        </ul>
       </div>
     );
   }

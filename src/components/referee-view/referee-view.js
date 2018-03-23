@@ -16,11 +16,11 @@ class RefereeView extends React.Component{
   render(){
     return(
       <div className="referee-submission">
-      <select>Game</select>
+        <select>Game</select>
         <h1>Scoreboard Submission</h1>
         <form>
           <h3>Home Team: {this.state.teamA}</h3>
-            <h5>
+          <h5>
             <input
               type="number"
               name="Team A Final Score"
