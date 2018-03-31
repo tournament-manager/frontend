@@ -43,7 +43,7 @@ export default class AdminViewDivisions extends React.Component{
                 } 
                 onDelete={this.props.submitHandlers.divisionDeleteRequest}
                 removeDivision={this.removeDivision}/>
-              <GroupTeamAssignment groupSlots={''}
+              <GroupTeamAssignment 
                 teamAssign={this.props.teamAssign}
                 division={division}
                 games={this.state.games[division._id] || []}
