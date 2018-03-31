@@ -48,11 +48,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          { 
-            loader: ExtractPlugin.extract(['css-loader', 'sass-loader']),
-          },
-        ],
+        loader: ExtractPlugin.extract(['css-loader', 'sass-loader']),
       },
       {
         test: /\.(woff|woff2|ttf|eot|glyph|\.svg)$/,
