@@ -32,57 +32,58 @@ export default class GroupTeamAssignment extends React.Component{
     this.handleAssignTeams =  this.handleAssignTeams.bind(this);
   }
 
-  componentDidMount(){
-    if(this.props.division) {
+  //componentDidMount(){
     
-      let gameIDs = ['groupA', 'groupB', 'groupC', 'groupD'].reduce((acc, cur) => {
-        this.props.division[cur].forEach(gameId => {
-          acc[gameId] = [cur];
-        });
-        return acc;
-      }, {});
+  //   if(this.props.division) {
+    
+  //     let gameIDs = ['groupA', 'groupB', 'groupC', 'groupD'].reduce((acc, cur) => {
+  //       this.props.division[cur].forEach(gameId => {
+  //         acc[gameId] = [cur];
+  //       });
+  //       return acc;
+  //     }, {});
 
-      this.props.games.forEach(game => {
-        if (gameIDs[game._id]) {
-          if(game.teamA)  gameIDs[game._id].push(game.teamA, game.teamB);
-        }
-      });
+  //     this.props.games.forEach(game => {
+  //       if (gameIDs[game._id]) {
+  //         if(game.teamA)  gameIDs[game._id].push(game.teamA, game.teamB);
+  //       }
+  //     });
 
-      let teamIds = Object.values(gameIDs).reduce((acc, cur) => {
-        if (cur.length > 1) {
-          if (!acc[cur[0]]) acc[cur[0]] = new Set();
-          acc[cur[0]].add(...cur.slice(1));
-        }
-        return acc;
-      },{});
+  //     let teamIds = Object.values(gameIDs).reduce((acc, cur) => {
+  //       if (cur.length > 1) {
+  //         if (!acc[cur[0]]) acc[cur[0]] = new Set();
+  //         acc[cur[0]].add(...cur.slice(1));
+  //       }
+  //       return acc;
+  //     },{});
 
-      let teams = Object.keys(teamIds).reduce((acc,cur) => {
-        teamIds[cur].forEach(teamId => {
-          if (!acc[teamId]) acc[teamId] = [];
-          acc[teamId].push(cur);
-        });
-        return acc;
-      },{});
+  //     let teams = Object.keys(teamIds).reduce((acc,cur) => {
+  //       teamIds[cur].forEach(teamId => {
+  //         if (!acc[teamId]) acc[teamId] = [];
+  //         acc[teamId].push(cur);
+  //       });
+  //       return acc;
+  //     },{});
 
-      let groupTeams = this.props.teams.reduce((acc, cur) => {
-        if (teams[cur._id]) {
-          if (! acc[teams[cur._id][0]]) acc[teams[cur._id][0]] = [];
-          acc[teams[cur._id][0]].push(cur);
-        }
-        return acc;
-      },{});
+  //     let groupTeams = this.props.teams.reduce((acc, cur) => {
+  //       if (teams[cur._id]) {
+  //         if (! acc[teams[cur._id][0]]) acc[teams[cur._id][0]] = [];
+  //         acc[teams[cur._id][0]].push(cur);
+  //       }
+  //       return acc;
+  //     },{});
 
-      let groupSlots =  Object.keys(groupTeams).reduce((acc, cur) => {
-        let letter = cur[cur.length -1];
-        groupTeams[cur].forEach((team, i ) => { 
-          acc[`${letter}${i + 1}`] = team;
-        });
-        return acc;
-      }, {});
+  //     let groupSlots =  Object.keys(groupTeams).reduce((acc, cur) => {
+  //       let letter = cur[cur.length -1];
+  //       groupTeams[cur].forEach((team, i ) => { 
+  //         acc[`${letter}${i + 1}`] = team;
+  //       });
+  //       return acc;
+  //     }, {});
      
-      this.setState({groupSlots: {...this.state.groupSlots, ...groupSlots}});
-    }
-  }
+  //     this.setState({groupSlots: {...this.state.groupSlots, ...groupSlots}});
+  //   }
+  //}
 
   componentWillReceiveProps(nextProps){
     // if(nextProps.division) {
@@ -134,7 +135,7 @@ export default class GroupTeamAssignment extends React.Component{
      
     //   this.setState({groupSlots: {...this.state.groupSlots, ...groupSlots}});
   
-   // }
+    // }
     if (!nextProps.groupSlots) return;
     this.setState({groupSlots: nextProps.groupSlots, teams: nextProps.teams});
   }
