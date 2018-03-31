@@ -6,7 +6,7 @@
   "scripts": {
     "bundle": "webpack",
     "watch": "webpack-dev-server --inline --hot",
-    "test": "jest",
+    "test": "jest -i",
     "test:watch": "jest --watchAll",
     "heroku-postbuild": "webpack -p --progress",
     "start": "node index.js"
