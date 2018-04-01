@@ -21,6 +21,7 @@
       "process.env": {
         "NODE_ENV": "production"
       },
+      "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
       "moduleNameMapper": {
         "^.+\\.(css|scss)$": "identity-obj-proxy"
       },
