@@ -25,8 +25,8 @@ class TournamentView extends React.Component {
                 className="tournament-view">
                 <h3 onClick={this.toggle}>{tournament.name}</h3>
                 {this.state.isVisible ?
-                  this.props.divisions[tournament._id] ?
-                    <DivisionView divisions={this.props.divisions[tournament._id]}/>
+                  tournament.divisions ?
+                    <DivisionView divisions={tournament.divisions}/>
                     :undefined
                   :undefined}
               </li>
@@ -40,8 +40,8 @@ class TournamentView extends React.Component {
 
 const mapStateToProps = state => ({
   tournaments: state.tournaments,
-  divisions: state.divisions,
-  game: state.game,
+  //divisions: state.divisions,
+  //game: state.game,
 });
 
 export default connect(mapStateToProps, null)(TournamentView);

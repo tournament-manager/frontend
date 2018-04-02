@@ -2,7 +2,7 @@ import superagent from 'superagent';
 
 const teamSet = team => ({type: 'TEAM_SET' , payload: team});
 
-const teamSetAll = teams => ({type: 'TEAM_SET_ALL' , payload: teams});
+const teamSetAll = (tournamentId, teams) => ({type: 'TEAM_SET_ALL' , payload: [tournamentId, teams]});
 
 const teamGetRequest = teamId => dispatch => {
   return superagent.get(`${__API_URL__}/teams/${teamId}`)
@@ -15,4 +15,11 @@ const teamAllGetRequest = () => dispatch => {
     .then(res => dispatch(teamSetAll(res.body)));
 };
 
-export {teamGetRequest, teamAllGetRequest};
+const teamsGetByTournamentRequest = tournamentId => dispatch => {
+  let token = localStorage.token;
+  return superagent.get(`${__API_URL__}/teams/tournament/${tournamentId}`)
+    .set({'Authorization': `Bearer ${token}`})
+    .then(res => dispatch(teamSetAll(tournamentId, res.body)));
+};
+
+export {teamGetRequest, teamAllGetRequest, teamsGetByTournamentRequest};

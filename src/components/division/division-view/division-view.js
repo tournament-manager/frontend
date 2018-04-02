@@ -15,6 +15,17 @@ class DivisionView extends React.Component {
     this.setState({isVisible: !this.state.isVisible});
   }
 
+  divisionGames(division){
+    return [...division.groupA, 
+      ...division.groupB, 
+      ...division.groupC, 
+      ...division.groupD,
+      ...division.consolidation,
+      ...division.semiFinal,
+      ...division.final,
+    ];
+  }
+
   render(){
     return (
       <ul className="division-view-list">
@@ -23,8 +34,8 @@ class DivisionView extends React.Component {
             <li key={division._id}>
               <h4 onClick={this.toggle}>{division.name}</h4>
               { this.state.isVisible ?
-                this.props.games[division._id] ?
-                  <GameView games={this.props.games[division._id]}/> 
+                division.groupA.length ?
+                  <GameView games={this.divisionGames(division)}/> 
                   :undefined
                 :undefined}
             </li>

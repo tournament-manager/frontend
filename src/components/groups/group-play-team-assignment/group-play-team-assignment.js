@@ -56,10 +56,16 @@ export default class GroupTeamAssignment extends React.Component{
         });
         return acc;
       }, {});
-      
-      this.setState({groupSlots: {...this.state.groupSlots, ...groupSlots}});
 
+      let teamList = '';
+      if (this.props.teams){
+        let div = this.props.division;
+        if (this.props.teams[div.classification])  
+          teamList = this.props.teams[div.classification][div.agegroup] || '';
+      }
+      this.setState({groupSlots: {...this.state.groupSlots, ...groupSlots}, teams: teamList});
     }
+
   }
 
   componentWillReceiveProps(nextProps){
@@ -91,76 +97,76 @@ export default class GroupTeamAssignment extends React.Component{
           <h3>Group A</h3>
           <TeamSelect onSelect={this.onTeamSelect} 
             teamName={this.state.groupSlots.A1.name} 
-            groupSlot="A1" teams={this.props.teams}/>
+            groupSlot="A1" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.A2.name} 
-            groupSlot="A2" teams={this.props.teams}/>
+            groupSlot="A2" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.A3.name} 
-            groupSlot="A3" teams={this.props.teams}/>
+            groupSlot="A3" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.A4.name}  
-            groupSlot="A4" teams={this.props.teams}/>
+            groupSlot="A4" teams={this.state.teams}/>
         </article>
 
         <article className="group-play-container" >
           <h3>Group B</h3>
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.B1.name} 
-            groupSlot="B1" teams={this.props.teams}/>
+            groupSlot="B1" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.B2.name} 
-            groupSlot="B2" teams={this.props.teams}/>
+            groupSlot="B2" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.B3.name} 
-            groupSlot="B3" teams={this.props.teams}/>
+            groupSlot="B3" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.B4.name} 
-            groupSlot="B4" teams={this.props.teams}/>
+            groupSlot="B4" teams={this.state.teams}/>
         </article>
 
         <article className="group-play-container" >
           <h3>Group C</h3>
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.C1.name} 
-            groupSlot="C1" teams={this.props.teams}/>
+            groupSlot="C1" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.C2.name} 
-            groupSlot="C2" teams={this.props.teams}/>
+            groupSlot="C2" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.C3.name} 
-            groupSlot="C3" teams={this.props.teams}/>
+            groupSlot="C3" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.C4.name} 
-            groupSlot="C4" teams={this.props.teams}/>
+            groupSlot="C4" teams={this.state.teams}/>
         </article> 
 
         <article className="group-play-container" >
           <h3>Group D</h3>
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.D1.name} 
-            groupSlot="D1" teams={this.props.teams}/>
+            groupSlot="D1" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.D2.name} 
-            groupSlot="D2" teams={this.props.teams}/>
+            groupSlot="D2" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.D3.name} 
-            groupSlot="D3" teams={this.props.teams}/>
+            groupSlot="D3" teams={this.state.teams}/>
 
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.D4.name} 
-            groupSlot="D4" teams={this.props.teams}/>
+            groupSlot="D4" teams={this.state.teams}/>
         </article>   
       </section>
     );

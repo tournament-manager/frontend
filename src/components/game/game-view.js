@@ -22,8 +22,13 @@ export default class GameView extends React.Component {
             <li className="game-view" 
               key={`${game._id}${i}`}>
               <h5 key={game._id} onClick={this.toggle}>{game.gamenumber}</h5>
-              <TeamView key={game.teamA} team={game.teamA}/>
-              <TeamView key={game.teamB} team={game.teamB}/>
+              <TeamView 
+                team={game.teamA !== undefined ? game.teamA : ''} 
+                result={game.teamAResult !== undefined ? game.teamAResult : ''}/>
+
+              <TeamView 
+                team={game.teamB !== undefined ? game.teamB : ''} 
+                result={game.teamBResult !== undefined ? game.teamBResult : ''}/>
             </li>
           ))
           : undefined}
