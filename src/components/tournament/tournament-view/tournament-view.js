@@ -1,38 +1,56 @@
+import './_tournament-view.scss';
 import React from 'react';
 import {connect} from 'react-redux';
-import {DivisionView} from '../../division';
+import {TournamentSelect, DivisionSelect} from '../../select-box';
+import {GroupPlayView} from '../../groups';
 
 class TournamentView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isVisible: false,
+      tournament: '',
+      divisions: '',
+      division: '',
     };
     this.toggle = this.toggle.bind(this);
+    this.selectTournament = this.selectTournament.bind(this);
+    this.selectDivision = this.selectDivision.bind(this);
   }
+
   toggle(){
     this.setState({isVisible: !this.state.isVisible});
+  }
+
+  selectTournament(tournament){
+    this.setState({
+      tournament: tournament,
+      divisions: tournament.divisions,
+    });
+  }
+
+  selectDivision(division){
+    this.setState({
+      division: division,
+    });
   }
 
   render() {
     return (
       <section className="tournament-view-container">
-        <h2>Tournaments</h2>
-        <ul className="tournament-view-list">
-          {this.props.tournaments.length ?
-            this.props.tournaments.map(tournament => (
-              <li key={tournament._id}  
-                className="tournament-view">
-                <h3 onClick={this.toggle}>{tournament.name}</h3>
-                {this.state.isVisible ?
-                  tournament.divisions ?
-                    <DivisionView divisions={tournament.divisions}/>
-                    :undefined
-                  :undefined}
-              </li>
-            ))
-            : undefined}
-        </ul>
+        <div className="tournament-view-selections-wrap">
+          <h2>Tournaments</h2>
+          <TournamentSelect tournaments={this.props.tournaments}
+            tournamentName={this.state.tournament.name}
+            onSelect={this.selectTournament}/>
+
+          <DivisionSelect divisions={this.state.divisions}
+            DivisionName={this.state.tournament.name}
+            onSelect={this.selectDivision}/>
+        </div>
+        {this.state.division ? 
+          <GroupPlayView division={this.state.division} />
+          : undefined}
       </section>
     );
   }

@@ -1,3 +1,4 @@
+import './_game-view-list.scss';
 import React from 'react';
 import TeamView from '../team/team-view';
 
@@ -21,7 +22,7 @@ export default class GameView extends React.Component {
           this.props.games.map((game, i)  => (
             <li className="game-view" 
               key={`${game._id}${i}`}>
-              <h5 key={game._id} onClick={this.toggle}>{game.gamenumber}</h5>
+              <h5 key={game._id} onClick={this.toggle}>Game {game.gamenumber}</h5>
               <TeamView 
                 team={game.teamA !== undefined ? game.teamA : ''} 
                 result={game.teamAResult !== undefined ? game.teamAResult : ''}/>

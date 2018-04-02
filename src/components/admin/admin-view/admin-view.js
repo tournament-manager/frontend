@@ -56,7 +56,8 @@ class AdminView extends React.Component{
       <section className="admin-view-container">
         <TournamentSelect tournaments={this.props.tournaments}
           tournamentName={this.state.tournament.name}
-          onSelect={this.selectTournament}/>
+          onSelect={this.selectTournament}
+          lastOption={true}/>
         <AdminViewTournament tournament={this.state.tournament}
           submitHandlers={this.props.tournamentFormHandlers}
           selectTournament={this.selectTournament}/>

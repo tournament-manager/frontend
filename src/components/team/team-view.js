@@ -1,3 +1,4 @@
+import './_team-view.scss';
 import React from 'react';
 
 export default class TeamView extends React.Component {
