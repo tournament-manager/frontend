@@ -3,6 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {TournamentSelect, DivisionSelect} from '../../select-box';
 import {GroupPlayView} from '../../groups';
+import EliminationRoundView from '../../elimination-round/elimination-round-view/elimination-round-view';
 
 class TournamentView extends React.Component {
   constructor(props) {
@@ -48,8 +49,18 @@ class TournamentView extends React.Component {
             DivisionName={this.state.tournament.name}
             onSelect={this.selectDivision}/>
         </div>
-        {this.state.division ? 
-          <GroupPlayView division={this.state.division} />
+        {this.state.division ?
+          ( 
+            <React.Fragment >
+              <GroupPlayView division={this.state.division} />
+              <EliminationRoundView heading="Consolidation"
+                games={this.state.division.consolidation}/>
+              <EliminationRoundView heading="Semifinals"
+                games={this.state.division.semiFinal}/>
+              <EliminationRoundView heading="Final"
+                games={this.state.division.final}/>
+            </React.Fragment >
+          )
           : undefined}
       </section>
     );

@@ -18,9 +18,9 @@ export default class GroupPlayView extends React.Component{
 
   render(){
     return (
-      <section className={`group-play-view-container ${this.state.isCollapsed ? 'collapsed' : ''}`}>
+      <section className={`group-play-view-container${this.state.isCollapsed ? ' collapsed' : ''}`}>
         <h2>Group Play</h2>
-        <span className={`toggle-view ${this.state.isCollapsed ? 'collapsed' : ''}`} onClick={this.toggleView}></span>
+        <span className={`toggle-view${this.state.isCollapsed ? ' collapsed' : ''}`} onClick={this.toggleView}></span>
        
         { ['groupA', 'groupB', 'groupC', 'groupD'].map(group =>  
           <GroupPlayGroup key={group} groupHeading={group.replace('group', 'Group ')}
