@@ -37,12 +37,14 @@ export default class GroupTeamAssignment extends React.Component{
       //create object with groups as properties and arrays of teams as values
       //{groupA: [team, team, team, team]}
       let groupTeams = ['groupA', 'groupB', 'groupC', 'groupD'].reduce((acc, cur, i) => {
-        this.props.division[cur].forEach(game => {
-          if (game.gamenumber === (i * 6) + 1 || game.gamenumber === (i * 6) + 2){
-            if(!acc[cur]) acc[cur] = [];
-            acc[cur].push(game.teamA, game.teamB);
-          }
-        });
+        if(this.props.division[cur].length){
+          this.props.division[cur].forEach(game => {
+            if (game.gamenumber === (i * 6) + 1 || game.gamenumber === (i * 6) + 2){
+              if(!acc[cur]) acc[cur] = [];
+              acc[cur].push(game.teamA, game.teamB);
+            }
+          });
+        }
         return acc;
       }, {});
 

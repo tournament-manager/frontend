@@ -14,8 +14,9 @@ import {adminTournamentsGetRequest} from '../../actions/admin-tournaments-action
 import {setToken} from '../../actions/signin-signup-actions';
 import {AppNav} from './';
 import TournamentView from '../tournament/tournament-view/tournament-view';
-import DivisionView from '../division/division-view/division-view';
-import GameView from '../game/game-view';
+import ScoreCardView from '../scorecard/scorecard-view/scorecard-view';
+// import DivisionView from '../division/division-view/division-view';
+// import GameView from '../game/game-view';
 
 
 store.subscribe(() => {
@@ -59,8 +60,11 @@ export default class App extends React.Component{
             <Route exact path="/tournaments" render={props => {
               return <TournamentView {...props}/>;
             }} />
-            <Route exact path="/divisions" component={DivisionView} />
-            <Route exact path="/games" component={GameView} />
+
+            <Route exact path="/scorecard" component={ScoreCardView} />
+
+            {/* <Route exact path="/divisions" component={DivisionView} />
+            <Route exact path="/games" component={GameView} /> */}
           </main>
         </React.Fragment>
       </Provider>

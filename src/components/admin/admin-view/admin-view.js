@@ -36,7 +36,7 @@ class AdminView extends React.Component{
           this.setState({
             tournament: tournament, 
             teams: this.props.teams[tournament._id], 
-            divisions: tournament.divisions, 
+            divisions: this.props.divisions[tournament._id], 
             games: this.props.games || [],
           });
         });
@@ -45,7 +45,7 @@ class AdminView extends React.Component{
     this.setState({
       tournament: tournament, 
       teams: this.props.teams[tournament._id], 
-      divisions: tournament.divisions, 
+      divisions: this.props.divisions[tournament._id], 
       games: this.props.games || [],
     });
   }
@@ -69,7 +69,6 @@ class AdminView extends React.Component{
             teams={this.state.teams}
             games={this.props.games}
           />
-            
           : undefined}
       </section>
     );

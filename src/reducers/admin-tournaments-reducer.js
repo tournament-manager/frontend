@@ -11,9 +11,9 @@ export default (state=[], action) => {
 
   takeAction['ADMIN_TOURNAMENTS_SET'] = adminTournaments => [...state, ...adminTournaments];
 
-  takeAction['TOURNAMENT_DELETE'] = tournamentId => state.filter(tournament => tournament._id !== tournamentId);
+  takeAction['TOURNAMENT_DELETE'] = tournamentId => [...state].filter(tournament => tournament._id !== tournamentId);
 
-  takeAction['TOURNAMENT_UPDATE'] = tournamentUpdate => state.map(tournament => 
+  takeAction['TOURNAMENT_UPDATE'] = tournamentUpdate => [...state].map(tournament => 
     tournament._id === tournamentUpdate._id ? 
       tournamentUpdate 
       : tournament
