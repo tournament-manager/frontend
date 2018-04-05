@@ -39,13 +39,21 @@ export default (state={}, action) => {
     return tempState;
   };
 
-  takeAction['ADMIN_TOURNAMENTS_SET'] = tournaments => {
-    let tempState = {...state};
-    tournaments.forEach(tournament => {
-      if (tournament.divisions.length) tempState[tournament._id] = tournament.divisions; 
-    });
-    return tempState;
-  };
+  // takeAction['ADMIN_TOURNAMENTS_SET'] = tournaments => {
+  //   let tempState = {...state};
+  //   tournaments.forEach(tournament => {
+  //     if (tournament.divisions.length) tempState[tournament._id] = tournament.divisions; 
+  //   });
+  //   return tempState;
+  // };
+
+  // takeAction['TOURNAMENT_SET_ALL'] = tournaments => {
+  //   let tempState = {...state};
+  //   tournaments.forEach(tournament => {
+  //     if (tournament.divisions.length) tempState[tournament._id] = tournament.divisions; 
+  //   });
+  //   return tempState;
+  // };
 
   return takeAction[type] ? takeAction[type](payload) : state;
 

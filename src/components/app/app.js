@@ -31,7 +31,7 @@ export default class App extends React.Component{
 
     Promise.all([
       store.dispatch(tournamentAllGetRequest()),
-      store.dispatch(divisionAllGetRequest()),
+      //store.dispatch(divisionAllGetRequest()),
       //store.dispatch(teamAllGetRequest()),
       //store.dispatch(gameAllGetRequest()),
     ])
@@ -57,9 +57,10 @@ export default class App extends React.Component{
             )}/>
             <Route exact path="/admin" component={AdminView} />
             <Route exact path="/welcome/:auth" component={Landing} />
-            <Route exact path="/tournaments" render={props => {
+            {/* <Route exact path="/tournaments" render={props => {
               return <TournamentView {...props}/>;
-            }} />
+            }} /> */}
+            <Route exact path="/tournaments" component={TournamentView}/>
 
             <Route exact path="/scorecard" component={ScoreCardView} />
 

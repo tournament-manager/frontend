@@ -6,6 +6,7 @@ export default class GroupTeamAssignment extends React.Component{
   constructor(props){
     super(props);
     this.state = {
+      isCollapsed: false,
       divisions: '',
       teams: '',
       groupSlots: {
@@ -30,6 +31,7 @@ export default class GroupTeamAssignment extends React.Component{
 
     this.onTeamSelect = this.onTeamSelect.bind(this);
     this.handleAssignTeams =  this.handleAssignTeams.bind(this);
+    this.toggleView = this.toggleView.bind(this);
   }
 
   componentDidMount(){
@@ -75,6 +77,10 @@ export default class GroupTeamAssignment extends React.Component{
     this.setState({groupSlots: nextProps.groupSlots, teams: nextProps.teams});
   }
 
+  toggleView(){
+    this.setState({isCollapsed: !this.state.isCollapsed});
+  }
+
   onTeamSelect(groupSlot, team){
     let groupSlots = {...this.state.groupSlots};
     groupSlots[groupSlot] = team;
@@ -89,12 +95,9 @@ export default class GroupTeamAssignment extends React.Component{
   render(){
     return (
       <section className="group-team-assignment-container">
-        <div className="group-team-assignment-btn-wrap">
-          <button className="group-team-assignment-btn"
-            onClick={this.handleAssignTeams}>
-          Assign Teams
-          </button>
-        </div>
+        <h4>Group Team Assignment</h4>
+        <span className={`toggle-view${this.state.isCollapsed ? ' collapsed' : ''}`} onClick={this.toggleView}></span>
+       
         <article className="group-play-container" >
           <h3>Group A</h3>
           <TeamSelect onSelect={this.onTeamSelect} 
@@ -169,7 +172,13 @@ export default class GroupTeamAssignment extends React.Component{
           <TeamSelect onSelect={this.onTeamSelect}
             teamName={this.state.groupSlots.D4.name} 
             groupSlot="D4" teams={this.state.teams}/>
-        </article>   
+        </article>
+        <div className="group-team-assignment-btn-wrap">
+          <button className="group-team-assignment-btn"
+            onClick={this.handleAssignTeams}>
+          Assign Teams
+          </button>
+        </div>   
       </section>
     );
   }

@@ -29,7 +29,8 @@ export default class AgeGroupList extends React.Component{
   render(){
     return(
       <div className="age-group-list-wrap">
-        <div className='age-group-value'
+        <div className="age-group-label">Age Group:</div>
+        <div className={`age-group-value${this.props.edit ? ' edit' : ''}`}
           onClick={this.toggleVisible}>
           {this.state.age || <span className="age-group-select-placeholder" >select age group</span>}</div>
         <ul className={`age-group-list${this.state.isVisible ? ' visible' : ''}`}>

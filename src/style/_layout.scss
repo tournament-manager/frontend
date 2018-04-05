@@ -85,6 +85,19 @@ section {
 
 }
 
+.tournament-form.edit {
+
+  input {
+    display: block;
+    margin: .5em 0;
+    font-size: 1.25em;
+    text-indent: .25em;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+}
+
 .division-form {
 
   input {
@@ -94,6 +107,11 @@ section {
     text-indent: .25em;
     width: 100%;
     box-sizing: border-box;
+    border-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: .25em;
+    font-weight: bold;
+    line-height: 1.75em;
   }
 
   .division-form-btn-wrap {
@@ -109,6 +127,27 @@ section {
     margin-left: .5em;
   }
 
+  button[name="remove"] {
+    float: left;
+    background-color: #333;
+    color: #eee;
+    margin-left: 0;
+  }
+  
+}
+
+.division-form.edit{
+
+  input {
+    display: block;
+    margin: .5em 0;
+    font-size: 1.25em;
+    text-indent: .25em;
+    width: 100%;
+    box-sizing: border-box;
+    border-color: rgb(238, 238, 238);
+    background-color: #fff;
+  }
 }
 
 .add-division {

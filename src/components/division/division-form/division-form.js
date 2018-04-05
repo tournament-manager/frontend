@@ -9,10 +9,13 @@ export default class DivisionForm extends  React.Component{
       classification: this.props.division.classification || '',
       name: this.props.division.name || '',
       _id: this.props.division._id || '',
+      edit: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -25,6 +28,19 @@ export default class DivisionForm extends  React.Component{
     });
   }
 
+  toggleEdit(){
+    this.setState({edit: !this.state.edit});
+  }
+
+  handleCancel(){
+    this.setState({
+      edit: !this.state.edit,
+      name: this.props.division.name || '',
+      agegroup: this.props.division.agegroup || '',
+      classification: this.props.division.classification || '',
+    });
+  }
+  
   handleChange(e){
     this.setState({[e.target.name]: e.target.value});
   }
@@ -50,21 +66,35 @@ export default class DivisionForm extends  React.Component{
 
   render(){
     return(
-      <form className="division-form" name="division" onSubmit={this.handleSubmit}>
+      <form className={`division-form${this.state.edit ? ' edit' : ''}`} name="division" onSubmit={this.handleSubmit}>
         <input name="name"
           placeholder="Division Name"  
           type="text"
           onChange={this.handleChange}
-          value={this.state.name}/>
+          value={this.state.name}
+          readOnly={!this.state.edit}
+        />
 
         <ClassificationSelect onSelect={this.handleChange}
-          textValue={this.state.classification}/>
+          textValue={this.state.classification}
+          edit={this.state.edit}/>
 
         <AgeGroupList onSelect={this.handleChange} 
-          textValue={this.state.agegroup} />
+          textValue={this.state.agegroup} 
+          edit={this.state.edit}/>
+
         <div className="division-form-btn-wrap">
-          <button onClick={this.handleDelete} type="button" name="remove" >Remove</button>
-          <button type='submit' name='save'>Save</button>
+          {this.state.edit ?
+            <React.Fragment>
+              <button onClick={this.handleDelete} type="button" name="remove" >Delete</button>
+              <button type='submit' name='save'>Save</button>
+              <button onClick={this.handleCancel} type="button" name="cancel" >Cancel</button>
+            </React.Fragment>
+            : undefined}
+
+          {!this.state.edit ?
+            <button type="edit" name="edit" onClick={this.toggleEdit}>Edit</button>
+            : undefined}
         </div>
       </form>
     );

@@ -3,6 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {TournamentSelect, DivisionSelect, GameSelect} from '../../select-box';
 import {gameUpdateRequest} from '../../../actions/game-actions';
+import {tournamentGetRequest} from '../../../actions/tournament-actions';
 import ScorecardForm from '../scorecard-form/scorecard-form';
 
 class ScoreCardView extends React.Component {
@@ -21,10 +22,15 @@ class ScoreCardView extends React.Component {
   }
 
   selectTournament(tournament){
-    this.setState({
-      tournament: tournament,
-      divisions: tournament.divisions,
-    });
+    //fetch all the data for the tournament
+    this.props.tournamentGetRequest(tournament._id)
+      .then(action => {
+        let tournament = action.payload;
+        this.setState({
+          tournament: tournament,
+          divisions: tournament.divisions,
+        });
+      });
   }
 
   selectDivision(division){
@@ -75,6 +81,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   gameUpdateRequest: game => dispatch(gameUpdateRequest(game)),
+  tournamentGetRequest: id => dispatch(tournamentGetRequest(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScoreCardView);

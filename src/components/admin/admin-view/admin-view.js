@@ -5,7 +5,7 @@ import AdminViewTournament from '../admin-view-tournaments/admin-view-tournament
 import {TournamentSelect} from '../../select-box';
 import {connect} from 'react-redux';
 import {teamsGetByTournamentRequest} from '../../../actions/team-actions';
-import {tournamentCreateRequest, tournamentUpdateRequest} from '../../../actions/tournament-actions';
+import {tournamentCreateRequest, tournamentUpdateRequest,tournamentGetRequest} from '../../../actions/tournament-actions';
 import {divisionCreateRequest, divisionUpdateRequest, divisionDeleteRequest, divisionPopulateRequest}  from '../../../actions/division-actions';
 
 class AdminView extends React.Component{
@@ -15,40 +15,66 @@ class AdminView extends React.Component{
       teams: '',
       tournament: '',
       divisions: [],
-      games: this.props.games || [],
+     // games: this.props.games || [],
     };
     this.selectTournament =  this.selectTournament.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
-    if(this.state.tournament)
-      this.setState({
-        divisions: nextProps.divisions[this.state.tournament._id] || [], 
-        games: this.props.games || [],
-        teams: nextProps.teams[this.state.tournament._id] || '',
-      });
+    // if(this.state.tournament)
+    //   this.setState({
+    //     //divisions: nextProps.divisions[this.state.tournament._id] || [], 
+    //     //games: this.props.games || [],
+    //     //teams: nextProps.teams[this.state.tournament._id] || '',
+    //   });
   }
 
   selectTournament(tournament){
-    if (tournament._id && !this.props.teams[tournament._id]){
-      return this.props.teamsGetByTournament(tournament._id)
-        .then(() => {
+    if (tournament._id){
+      return  this.props.tournamentGetRequest(tournament._id)
+        .then(tournamentAction => {
+          let fullTournament = tournamentAction.payload;
+          if (this.props.teams[tournament._id]) return fullTournament;
+          return this.props.teamsGetByTournament(tournament._id)
+            .then (() => fullTournament);
+        })
+        .then(tournament => {
           this.setState({
             tournament: tournament, 
             teams: this.props.teams[tournament._id], 
-            divisions: this.props.divisions[tournament._id], 
-            games: this.props.games || [],
+            divisions: tournament.divisions, 
           });
         });
     }
 
     this.setState({
       tournament: tournament, 
-      teams: this.props.teams[tournament._id], 
-      divisions: this.props.divisions[tournament._id], 
-      games: this.props.games || [],
+      teams: '', 
+      divisions: '', 
+      //games: this.props.games || [],
     });
   }
+
+  // selectTournament(tournament){
+  //   if (tournament._id && !this.props.teams[tournament._id]){
+  //     return this.props.teamsGetByTournament(tournament._id)
+  //       .then(() => {
+  //         this.setState({
+  //           tournament: tournament, 
+  //           teams: this.props.teams[tournament._id], 
+  //           divisions: this.props.divisions[tournament._id], 
+  //           games: this.props.games || [],
+  //         });
+  //       });
+  //   }
+
+  //   this.setState({
+  //     tournament: tournament, 
+  //     teams: this.props.teams[tournament._id], 
+  //     divisions: this.props.divisions[tournament._id], 
+  //     games: this.props.games || [],
+  //   });
+  // }
 
   render(){
     if (!localStorage.token) return <Redirect to='/' />;
@@ -67,7 +93,7 @@ class AdminView extends React.Component{
             submitHandlers={this.props.divisionFormHandlers}
             teamAssign={this.props.teamAssign}
             teams={this.state.teams}
-            games={this.props.games}
+            //games={this.props.games}
           />
           : undefined}
       </section>
@@ -77,9 +103,9 @@ class AdminView extends React.Component{
 
 const mapStateToProps = state => ({
   tournaments: state.adminTournaments,
-  divisions: state.divisions,
+  // divisions: state.divisions,
   teams: state.teams,
-  games: state.games,
+  // games: state.games,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -94,6 +120,7 @@ const mapDispatchToProps = dispatch => ({
   },
   teamAssign: (teamIds, divisionId) => dispatch(divisionPopulateRequest(teamIds, divisionId)),
   teamsGetByTournament: tournamentId => dispatch(teamsGetByTournamentRequest(tournamentId)),
+  tournamentGetRequest: id => dispatch(tournamentGetRequest(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminView);

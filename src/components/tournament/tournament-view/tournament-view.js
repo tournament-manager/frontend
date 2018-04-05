@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {TournamentSelect, DivisionSelect} from '../../select-box';
 import {GroupPlayView} from '../../groups';
 import EliminationRoundView from '../../elimination-round/elimination-round-view/elimination-round-view';
+import {tournamentAllGetRequest, tournamentGetRequest} from '../../../actions/tournament-actions';
 
 class TournamentView extends React.Component {
   constructor(props) {
@@ -19,15 +20,25 @@ class TournamentView extends React.Component {
     this.selectDivision = this.selectDivision.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    if(!nextProps.tournaments.length)
+      this.props.tournamentAllGetRequest();
+  }
+
   toggle(){
     this.setState({isVisible: !this.state.isVisible});
   }
 
   selectTournament(tournament){
-    this.setState({
-      tournament: tournament,
-      divisions: tournament.divisions,
-    });
+  //fetch all the data for the tournament
+    this.props.tournamentGetRequest(tournament._id)
+      .then(action => {
+        let tournament = action.payload;
+        this.setState({
+          tournament: tournament,
+          divisions: tournament.divisions,
+        });
+      });
   }
 
   selectDivision(division){
@@ -46,7 +57,7 @@ class TournamentView extends React.Component {
             onSelect={this.selectTournament}/>
 
           <DivisionSelect divisions={this.state.divisions}
-            DivisionName={this.state.tournament.name}
+            divisionName={this.state.division.name}
             onSelect={this.selectDivision}/>
         </div>
         {this.state.division ?
@@ -73,4 +84,9 @@ const mapStateToProps = state => ({
   //game: state.game,
 });
 
-export default connect(mapStateToProps, null)(TournamentView);
+const mapDispatchToProps = dispatch => ({
+  tournamentAllGetRequest: () => dispatch(tournamentAllGetRequest()),
+  tournamentGetRequest: id => dispatch(tournamentGetRequest(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TournamentView);

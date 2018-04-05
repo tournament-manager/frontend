@@ -7,7 +7,7 @@ export default (state=[], action) => {
 
   takeAction['RESET_STATE'] = () => [];
 
-  takeAction['TOURNAMENT_SET'] = tournament => [...state, tournament];
+  //takeAction['TOURNAMENT_SET'] = tournament => [...state, tournament];
 
   takeAction['TOURNAMENT_SET_ALL'] = tournaments => [...state, ...tournaments];
 

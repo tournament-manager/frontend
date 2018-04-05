@@ -25,7 +25,8 @@ export default class ClassificationSelect extends React.Component{
   render(){
     return(
       <div className="classification-list-wrap">
-        <div className='classification-value'
+        <div className="classification-label">Division Class:</div>
+        <div className={`classification-value${this.props.edit ? ' edit' : ''}`}
           onClick={this.toggleVisible}>
           {this.state.classification || <span className="classification-select-placeholder" >select a class</span>}</div>
         <ul className={`classification-list${this.state.isVisible ? ' visible' : ''}`}>
