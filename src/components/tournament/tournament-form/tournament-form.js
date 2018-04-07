@@ -18,12 +18,13 @@ export default class TournamentForm extends React.Component{
   }
 
   componentWillReceiveProps(nextProps){
-    if (!nextProps.tournament) return this.setState({name: '', dateStart: '', dateEnd: '', _id: ''});
+    if (!nextProps.tournament) return this.setState({name: '', dateStart: '', dateEnd: '', _id: '', edit: true});
     this.setState({
       _id: nextProps.tournament._id,
       name: nextProps.tournament.name,
       dateStart: nextProps.tournament.dateStart || '',
       dateEnd: nextProps.tournament.dateEnd || '',
+      edit: false,
     });
   }
 
