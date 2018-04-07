@@ -49,9 +49,13 @@ export default class TournamentForm extends React.Component{
           value={this.state.name} 
           onChange={this.handleChange}/>
 
+        <label>Start Date:</label>
+
         <input type="date" name="dateStart" 
           value={this.state.dateStart} 
           onChange={this.handleChange}/>
+
+        <label>End Date:</label>
 
         <input type="date" name="dateEnd"
           value={this.state.dateEnd} 

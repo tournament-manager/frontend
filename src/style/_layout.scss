@@ -62,6 +62,11 @@ section {
 
 .tournament-form {
 
+  label {
+    padding-top: 1em;
+    display: block;
+  }
+
   input {
     display: block;
     margin: .5em 0;
@@ -88,12 +93,13 @@ section {
 .tournament-form.edit {
 
   input {
-    display: block;
-    margin: .5em 0;
-    font-size: 1.25em;
-    text-indent: .25em;
-    width: 100%;
-    box-sizing: border-box;
+    outline: none;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  label {
+    border-top: 1px solid #eee;
   }
 
 }
@@ -133,7 +139,15 @@ section {
     color: #eee;
     margin-left: 0;
   }
-  
+
+  button[name="edit"] {
+    background-color: transparent;
+  }
+
+  button[name="cancel"] {
+    background-color: #eee;
+  }
+
 }
 
 .division-form.edit{
@@ -151,6 +165,7 @@ section {
 }
 
 .add-division {
+  margin-top: 1em;
   span {
     background-color: #fff;
     padding: .25em .75em;

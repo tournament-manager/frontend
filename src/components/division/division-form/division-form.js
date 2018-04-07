@@ -16,6 +16,7 @@ export default class DivisionForm extends  React.Component{
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleInvokeEdit = this.handleInvokeEdit.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -30,6 +31,11 @@ export default class DivisionForm extends  React.Component{
 
   toggleEdit(){
     this.setState({edit: !this.state.edit});
+  }
+
+  handleInvokeEdit(){
+    if(!this.state.edit)
+      this.setState({edit: true});
   }
 
   handleCancel(){
@@ -71,17 +77,20 @@ export default class DivisionForm extends  React.Component{
           placeholder="Division Name"  
           type="text"
           onChange={this.handleChange}
+          onDoubleClick={this.handleInvokeEdit}
           value={this.state.name}
           readOnly={!this.state.edit}
         />
 
         <ClassificationSelect onSelect={this.handleChange}
           textValue={this.state.classification}
-          edit={this.state.edit}/>
+          edit={this.state.edit}
+          invokeEdit={this.handleInvokeEdit}/>
 
         <AgeGroupList onSelect={this.handleChange} 
           textValue={this.state.agegroup} 
-          edit={this.state.edit}/>
+          edit={this.state.edit}
+          invokeEdit={this.handleInvokeEdit}/>
 
         <div className="division-form-btn-wrap">
           {this.state.edit ?

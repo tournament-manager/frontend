@@ -10,10 +10,22 @@ export default class ClassificationSelect extends React.Component{
     };
     this.toggleVisible = this.toggleVisible.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.invokeEdit = this.invokeEdit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.textValue !== this.props.textValue)
+      this.setState({classification: nextProps.textValue});
   }
 
   toggleVisible(){
-    this.setState({isVisible: !this.state.isVisible});
+    if(this.props.edit)
+      this.setState({isVisible: !this.state.isVisible});
+  }
+
+  invokeEdit(){
+    if(!this.props.edit)
+      this.props.invokeEdit();
   }
 
   handleChange(e){
@@ -27,7 +39,8 @@ export default class ClassificationSelect extends React.Component{
       <div className="classification-list-wrap">
         <div className="classification-label">Division Class:</div>
         <div className={`classification-value${this.props.edit ? ' edit' : ''}`}
-          onClick={this.toggleVisible}>
+          onClick={this.toggleVisible}
+          onDoubleClick={this.invokeEdit} >
           {this.state.classification || <span className="classification-select-placeholder" >select a class</span>}</div>
         <ul className={`classification-list${this.state.isVisible ? ' visible' : ''}`}>
           <li className="classification-item" 

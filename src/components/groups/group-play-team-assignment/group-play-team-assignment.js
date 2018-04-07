@@ -6,7 +6,7 @@ export default class GroupTeamAssignment extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      isCollapsed: false,
+      isCollapsed: true,
       divisions: '',
       teams: '',
       groupSlots: {
@@ -94,7 +94,7 @@ export default class GroupTeamAssignment extends React.Component{
 
   render(){
     return (
-      <section className="group-team-assignment-container">
+      <section className={`group-team-assignment-container${this.state.isCollapsed ? ' collapsed' : ''}`}>
         <h4>Group Team Assignment</h4>
         <span className={`toggle-view${this.state.isCollapsed ? ' collapsed' : ''}`} onClick={this.toggleView}></span>
        

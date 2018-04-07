@@ -1,8 +1,17 @@
 .group-team-assignment-container {
   position: relative;
+  border-radius: .25em;
+  max-height: 1000em;
+  transition: 350ms;
   h4{
     margin-bottom: 1em;
   }
+}
+
+.group-team-assignment-container.collapsed {
+  max-height: 3em;
+  overflow: hidden;
+  transition: 350ms;
 }
 
 .group-team-assignment-btn-wrap {
@@ -14,4 +23,9 @@
   padding: .25em .75em;
   border-radius: .25em;
   margin-left: .5em;
+}
+
+
+.group-play-container {
+  margin-bottom: 1.5em;
 }
