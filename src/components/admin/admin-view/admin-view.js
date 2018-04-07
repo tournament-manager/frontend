@@ -15,6 +15,7 @@ class AdminView extends React.Component{
       teams: '',
       tournament: '',
       divisions: [],
+      isVisible: false,
      // games: this.props.games || [],
     };
     this.selectTournament =  this.selectTournament.bind(this);
@@ -43,6 +44,7 @@ class AdminView extends React.Component{
             tournament: tournament, 
             teams: this.props.teams[tournament._id], 
             divisions: tournament.divisions, 
+            isVisible: true,
           });
         });
     }
@@ -50,7 +52,8 @@ class AdminView extends React.Component{
     this.setState({
       tournament: tournament, 
       teams: '', 
-      divisions: '', 
+      divisions: '',
+      isVisible: true, 
       //games: this.props.games || [],
     });
   }
@@ -84,9 +87,11 @@ class AdminView extends React.Component{
           tournamentName={this.state.tournament.name}
           onSelect={this.selectTournament}
           lastOption={true}/>
-        <AdminViewTournament tournament={this.state.tournament}
-          submitHandlers={this.props.tournamentFormHandlers}
-          selectTournament={this.selectTournament}/>
+        {this.state.isVisible ? 
+          <AdminViewTournament tournament={this.state.tournament}
+            submitHandlers={this.props.tournamentFormHandlers}
+            selectTournament={this.selectTournament}/>
+          : undefined}
         {this.state.tournament ?
           <AdminViewDivisions divisions={this.state.divisions}
             tournament={this.state.tournament}
