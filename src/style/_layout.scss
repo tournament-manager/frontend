@@ -52,12 +52,20 @@ section {
 
 .admin-tournament-view-container {
   margin-top: 1em;
-  
+  max-height: 100em;
+
   h2 {
     font-size: 2em;
     margin: .5em;
   }
 
+}
+
+.admin-tournament-view-container.collapsed {
+  margin: 0;
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .tournament-form {

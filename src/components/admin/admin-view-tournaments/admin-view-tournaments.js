@@ -15,7 +15,7 @@ export default class AdminViewTournament extends React.Component{
 
   render(){
     return (
-      <section className="admin-tournament-view-container"> 
+      <section className={`admin-tournament-view-container${this.props.isCollapsed ? ' collapsed' : ''}`}> 
         {/* <h2>{this.state.tournament.name}</h2> */}
         <h3>Tournament</h3>
         <TournamentForm tournament={this.state.tournament}
