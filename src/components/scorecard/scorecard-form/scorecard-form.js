@@ -23,8 +23,8 @@ export default class ScorecardForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     let game = {...this.props.game};
-    game.teamAResult = this.state.teamAResult;
-    game.teamBResult = this.state.teamBResult;
+    game.teamAResult = parseInt(this.state.teamAResult);
+    game.teamBResult = parseInt(this.state.teamBResult);
     this.props.onComplete(game)
       .then(() => {
         this.setState({teamAScore: 0, teamBScore: 0});

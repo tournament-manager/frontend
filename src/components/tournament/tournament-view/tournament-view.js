@@ -20,10 +20,15 @@ class TournamentView extends React.Component {
     this.selectDivision = this.selectDivision.bind(this);
   }
 
-  componentWillReceiveProps(nextProps){
-    if(!nextProps.tournaments.length)
-      this.props.tournamentAllGetRequest();
+  componentWillMount(){
+    if(!this.props.tournaments.length)
+      return this.props.tournamentAllGetRequest();
   }
+
+  // componentWillReceiveProps(nextProps){
+  //   if(!nextProps.tournaments.length)
+  //     this.props.tournamentAllGetRequest();
+  // }
 
   toggle(){
     this.setState({isVisible: !this.state.isVisible});

@@ -2,7 +2,7 @@ import './_scorecard-view.scss';
 import React from 'react';
 import {connect} from 'react-redux';
 import {TournamentSelect, DivisionSelect, GameSelect} from '../../select-box';
-import {gameUpdateRequest} from '../../../actions/game-actions';
+import {gameUpdateRequest, gameUpdateScoreRequest} from '../../../actions/game-actions';
 import {tournamentGetRequest} from '../../../actions/tournament-actions';
 import ScorecardForm from '../scorecard-form/scorecard-form';
 
@@ -67,7 +67,7 @@ class ScoreCardView extends React.Component {
             <h2>{this.state.game.group}: [<span> Game {this.state.game.gamenumber} </span>]</h2>
             <ScorecardForm game={this.state.game}
               resetGameSelection={this.selectGame}
-              onComplete={this.props.gameUpdateRequest}/>
+              onComplete={this.props.gameUpdateScoreRequest}/>
           </article>  
         ) : undefined}
       </section>
@@ -81,6 +81,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   gameUpdateRequest: game => dispatch(gameUpdateRequest(game)),
+  gameUpdateScoreRequest: game => dispatch(gameUpdateScoreRequest(game)),
   tournamentGetRequest: id => dispatch(tournamentGetRequest(id)),
 });
 
