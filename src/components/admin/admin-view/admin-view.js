@@ -83,6 +83,7 @@ class AdminView extends React.Component{
     if (!localStorage.token) return <Redirect to='/' />;
     return (
       <section className="admin-view-container">
+        <h2>Admin</h2>
         <TournamentSelect tournaments={this.props.tournaments}
           tournamentName={this.state.tournament.name}
           onSelect={this.selectTournament}

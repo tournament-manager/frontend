@@ -19,6 +19,7 @@ class ScoreCardView extends React.Component {
     this.selectTournament = this.selectTournament.bind(this);
     this.selectDivision = this.selectDivision.bind(this);
     this.selectGame = this.selectGame.bind(this);
+    this.submitGameResults = this.submitGameResults.bind(this);
   }
 
   selectTournament(tournament){
@@ -29,6 +30,7 @@ class ScoreCardView extends React.Component {
         this.setState({
           tournament: tournament,
           divisions: tournament.divisions,
+          division: tournament.divisions.filter(division => this.state.division._id === division._id)[0] || '',
         });
       });
   }
@@ -43,6 +45,11 @@ class ScoreCardView extends React.Component {
     });
   }
 
+  submitGameResults(game){
+    return this.props.gameUpdateScoreRequest(game)
+      .then(() => this.selectTournament(this.state.tournament));
+  }
+
   render() {
     return (
       <section className="scorecard-view-container">
@@ -54,7 +61,7 @@ class ScoreCardView extends React.Component {
             onSelect={this.selectTournament}/>
 
           <DivisionSelect divisions={this.state.divisions}
-            DivisionName={this.state.tournament.name}
+            divisionName={this.state.division.name || ''}
             onSelect={this.selectDivision}/>
 
           <GameSelect division={this.state.division}
@@ -67,7 +74,7 @@ class ScoreCardView extends React.Component {
             <h2>{this.state.game.group}: [<span> Game {this.state.game.gamenumber} </span>]</h2>
             <ScorecardForm game={this.state.game}
               resetGameSelection={this.selectGame}
-              onComplete={this.props.gameUpdateScoreRequest}/>
+              onComplete={this.submitGameResults}/>
           </article>  
         ) : undefined}
       </section>
@@ -76,7 +83,8 @@ class ScoreCardView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tournaments: state.tournaments,
+  //tournaments: state.tournaments,
+  tournaments: state.adminTournaments,
 });
 
 const mapDispatchToProps = dispatch => ({

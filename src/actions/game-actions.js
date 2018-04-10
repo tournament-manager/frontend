@@ -28,7 +28,8 @@ const gameUpdateScoreRequest = game => dispatch => {
   let token = localStorage.token;
   return superagent.put(`${__API_URL__}/game/scorecard`)
     .set({'Authorization': `Bearer ${token}`})
-    .send(game);
+    .send(game)
+    .then(() => game);
 };
 
 export {gameGetRequest, gameAllGetRequest, gameUpdateRequest, gameUpdateScoreRequest};

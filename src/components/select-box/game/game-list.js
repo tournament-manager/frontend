@@ -58,7 +58,8 @@ export default class GameSelect extends React.Component{
             ['groupA', 'groupB', 'groupC', 'groupD', 'consolidation', 'semiFinal', 'final']
               .reduce((games, group) => {
                 this.props.division[group].forEach(game => {
-                  if (game.teamA && game.teamB)
+                  // if (game.teamA && game.teamB)
+                  if (game.teamA && game.teamB && !game.complete)
                     games.push(
                       <GameItem key={game._id} 
                         toggle={this.handleChange}
