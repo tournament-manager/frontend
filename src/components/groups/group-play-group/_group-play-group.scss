@@ -7,10 +7,21 @@
   border-radius: .25em;
   max-height: 1000em;
   transition: 350ms;
+
+  h3 {
+    color: #fff;
+    font-weight: normal;
+  }
 }
 
 .group-view.collapsed {
   max-height: 2.5em;
   overflow: hidden;
   transition: 350ms;
+
+  h3 {
+    color: #333;
+    font-weight: bold;
+  }
+
 }

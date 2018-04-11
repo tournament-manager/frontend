@@ -32,6 +32,7 @@ const tournamentGetRequest = tournamentId => dispatch => {
 const tournamentAllGetRequest = () => dispatch => {
   return superagent.get(`${__API_URL__}/tournament`)
     .then(res =>  dispatch(tournamentSetAll(res.body)));
+    //.then(res => ({payload: res.body}) );
 };
 
 const tournamentCreateRequest = tournament => dispatch => {

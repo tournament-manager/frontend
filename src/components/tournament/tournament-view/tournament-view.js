@@ -21,7 +21,7 @@ class TournamentView extends React.Component {
   }
 
   componentWillMount(){
-    if(!this.props.tournaments.length)
+    if(!this.props.tournaments.length && !localStorage.tournaments)
       return this.props.tournamentAllGetRequest();
   }
 

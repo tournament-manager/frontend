@@ -30,7 +30,7 @@ export default class App extends React.Component{
     if (!state.token && localStorage.token) store.dispatch(setToken(localStorage.token));
 
     Promise.all([
-      store.dispatch(tournamentAllGetRequest()),
+      //store.dispatch(tournamentAllGetRequest()),
       //store.dispatch(divisionAllGetRequest()),
       //store.dispatch(teamAllGetRequest()),
       //store.dispatch(gameAllGetRequest()),
